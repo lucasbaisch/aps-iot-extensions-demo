@@ -3,12 +3,8 @@ const SENSORS = {
         name: 'Living Room',
         description: 'Basic sensor in the middle of the living room.',
         groupName: 'Level 1',
-        location: {
-            x: 31.92,
-            y: 11.49,
-            z: -12.97
-        },
-        objectId: 4124
+        location: {x: 6.076850891113281, y: -185.94415283203125, z: -10.433071613311768},
+        objectId: 5498
     },
     'sensor-2': {
         name: 'Dining Table',
