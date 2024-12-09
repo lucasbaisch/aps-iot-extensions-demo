@@ -1,0 +1,8 @@
+link com as modificações para mudar a cor: https://chatgpt.com/c/6756d9d7-2b5c-8003-88ab-1e1bbfa192f4
+
+pra forçar atualizar o heatmap:
+
+const customSensorValue = () => 0.8; 
+ou
+const customSensorValue = () => Math.random();
+sensorHeatmapsExt.updateHeatmaps(customSensorValue);

@@ -62,11 +62,15 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
         const index2 = Math.ceil(fractionalIndex);
         if (index1 !== index2) {
             const value = samples.values[index1] + (samples.values[index2] - samples.values[index1]) * (fractionalIndex - index1);
-            return (value - channel.min) / (channel.max - channel.min);
+            let return_value = (value - channel.min) / (channel.max - channel.min);
+            console.log("Retornando o valor ", return_value);
+            return return_value;
         }
         else {
             const value = samples.values[index1];
-            return (value - channel.min) / (channel.max - channel.min);
+            let return_value = (value - channel.min) / (channel.max - channel.min);
+            console.log("Retornando o valor ", return_value);
+            return return_value;
         }
     }
 
@@ -74,22 +78,30 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
         if (this.isActive()) {
             const channelID = this.currentChannelID;
             await this._setupSurfaceShading(this.viewer.model);
+            console.log("createHeatmaps ------------------ ", this.getSensorValue)
             this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, this.getSensorValue, { heatmapConfig: this.heatmapConfig });
         }
     }
 
-    async updateHeatmaps() {
+    async updateHeatmaps(value = this.getSensorValue) {
         if (this.isActive()) {
+            console.log("updateHeatmaps acionado");
             const channelID = this.currentChannelID;
             if (!this._surfaceShadingData) {
+                console.log("No surface shading data found. Setting up...");
                 await this._setupSurfaceShading(this.viewer.model);
-                this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, this.getSensorValue, { heatmapConfig: this.heatmapConfig });
+                console.log("Using value for renderSurfaceShading:", value);
+                this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, value, { heatmapConfig: this.heatmapConfig });
+            } else {
+                console.log("Surface shading data found. Updating...");
+                console.log("Using value for updateSurfaceShading:", value);
+                this._dataVizExt.updateSurfaceShading(value);
             }
-            else {
-                this._dataVizExt.updateSurfaceShading(this.getSensorValue);
-            }
+        } else {
+            console.log("Heatmaps extension is not active.");
         }
     }
+
 
     updateChannels() {
         if (this.dataView && this.panel) {

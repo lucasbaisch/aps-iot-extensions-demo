@@ -29,6 +29,9 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     // Initialize the timeline
     initTimeline(document.getElementById('timeline'), onTimeRangeChanged, onTimeMarkerChanged);
 
+    const sensorHeatmapsExt = viewer.getExtension(SensorHeatmapsExtensionID);
+    window.sensorHeatmapsExt = sensorHeatmapsExt;
+
     // Initialize our data view
     const dataView = new MyDataView();
     await dataView.init({ start: DEFAULT_TIMERANGE_START, end: DEFAULT_TIMERANGE_END });
