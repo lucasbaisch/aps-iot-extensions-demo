@@ -83,6 +83,40 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     function onCurrentChannelChanged(channelId) {
         extensions.forEach(ext => ext.currentChannelID = channelId);
     }
+
+    // Função para buscar o último valor do servidor
+    async function fetchLatestSensorData() {
+        try {
+            const response = await fetch('/api/sensors/latest');
+            if (!response.ok) throw new Error('Erro ao buscar os dados do servidor.');
+            const latestData = await response.json();
+            return latestData;
+        } catch (err) {
+            console.error('Erro ao buscar o valor mais recente:', err);
+            return null;
+        }
+    }
+
+    // Função para atualizar o heatmap com o último valor do servidor
+    function updateHeatmapWithLatestData() {
+        fetchLatestSensorData().then((data) => {
+            if (data) {
+                const { temperature, co2 } = data; // Ajuste conforme necessário
+                console.log('temperature, co2', temperature, co2)
+                const customSensorValue = () => temperature; // Usar temperatura como exemplo
+
+                if (window.sensorHeatmapsExt) {
+                    window.sensorHeatmapsExt.updateHeatmaps(customSensorValue);
+                    console.log(`Heatmap updated with temperature: ${temperature}, co2: ${co2}`);
+                } else {
+                    console.error('Heatmap extension not loaded.');
+                }
+            }
+        });
+    }
+
+    // Configura para buscar o último valor a cada 5 segundos (5000 ms)
+    setInterval(updateHeatmapWithLatestData, 5000);
 });
 
 window.getBoundingBox = function (model, dbid) {

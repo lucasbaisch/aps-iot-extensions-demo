@@ -3,42 +3,46 @@ const SENSORS = {
         name: 'Living Room',
         description: 'Basic sensor in the middle of the living room.',
         groupName: 'Level 1',
-        location: {x: 6.076850891113281, y: -185.94415283203125, z: -10.433071613311768},
-        objectId: 5498
-    },
-    'sensor-2': {
-        name: 'Dining Table',
-        description: 'Basic sensor at the dining table.',
-        groupName: 'Level 1',
         location: {
-            x: -10,
-            y: 41.64,
-            z: -12.15
+            "x": 1.2737443865427096,
+            "y": 6.16515857059915,
+            "z": -5.1788058280944895
         },
-        objectId: 4111
+        objectId: 4252
     },
-    'sensor-3': {
-        name: 'Kitchen',
-        description: 'Basic sensor in the kitchen.',
-        groupName: 'Level 1',
-        location: {
-            x: 10,
-            y: 41.64,
-            z: -12.15
-        },
-        objectId: 4111
-    },
-    'sensor-4': {
-        name: 'Bedroom',
-        description: 'Basic sensor in the bedroom.',
-        groupName: 'Level 2',
-        location: {
-            x: -7.46,
-            y: 41.47,
-            z: 2.97
-        },
-        objectId: 4085
-    }
+    // 'sensor-2': {
+    //     name: 'Dining Table',
+    //     description: 'Basic sensor at the dining table.',
+    //     groupName: 'Level 1',
+    //     location: {
+    //         "x": 1.2737443865427096,
+    //         "y": 6.16515857059915,
+    //         "z": -5.1788058280944895
+    //     },
+    //     objectId: 4252
+    // },
+    // 'sensor-3': {
+    //     name: 'Kitchen',
+    //     description: 'Basic sensor in the kitchen.',
+    //     groupName: 'Level 1',
+    //     location: {
+    //         "x": 1.2737443865427096,
+    //         "y": 6.16515857059915,
+    //         "z": -5.1788058280944895
+    //     },
+    //     objectId: 4252
+    // },
+    // 'sensor-4': {
+    //     name: 'Bedroom',
+    //     description: 'Basic sensor in the bedroom.',
+    //     groupName: 'Level 1',
+    //     location: {
+    //         "x": -6.158405517712083,
+    //         "y": 5.704175612634568,
+    //         "z": -5.178805828094482
+    //     },
+    //     objectId: 4252
+    // }
 };
 
 const CHANNELS = {
