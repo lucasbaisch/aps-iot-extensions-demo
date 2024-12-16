@@ -116,7 +116,7 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     }
 
     // Configura para buscar o último valor a cada 5 segundos (5000 ms)
-    setInterval(updateHeatmapWithLatestData, 5000);
+    setInterval(updateHeatmapWithLatestData, 500);
 });
 
 window.getBoundingBox = function (model, dbid) {
