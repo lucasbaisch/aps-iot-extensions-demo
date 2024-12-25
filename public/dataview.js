@@ -60,9 +60,17 @@ export class MyDataView {
 
     async _loadSamples(timerange, resolution) {
         const { start, end } = timerange;
-        this._timerange[0] = start;
-        this._timerange[1] = end;
-        const { timestamps, data } = await this._fetch(`/iot/samples?start=${start.toISOString()}&end=${end.toISOString()}&resolution=${resolution}`)
+        console.log('Chamando _loadSamples com:', { start, end, resolution }); // Log para depuração
+    
+        // Alterar para usar o POST na rota /api/sensors/aggregate
+        const { timestamps, data } = await this._post('/api/sensors/aggregate', {
+            start: start.toISOString(),
+            end: end.toISOString(),
+            resolution
+        });
+    
+        console.log('Resposta da API /api/sensors/aggregate:', { timestamps, data }); // Log para depuração
+    
         this._timestamps = timestamps.map(str => new Date(str));
         this._data = data;
     }

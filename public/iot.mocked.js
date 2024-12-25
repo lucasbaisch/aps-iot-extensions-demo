@@ -9,40 +9,8 @@ const SENSORS = {
             "z": -5.1788058280944895
         },
         objectId: 4252
-    },
-    // 'sensor-2': {
-    //     name: 'Dining Table',
-    //     description: 'Basic sensor at the dining table.',
-    //     groupName: 'Level 1',
-    //     location: {
-    //         "x": 1.2737443865427096,
-    //         "y": 6.16515857059915,
-    //         "z": -5.1788058280944895
-    //     },
-    //     objectId: 4252
-    // },
-    // 'sensor-3': {
-    //     name: 'Kitchen',
-    //     description: 'Basic sensor in the kitchen.',
-    //     groupName: 'Level 1',
-    //     location: {
-    //         "x": 1.2737443865427096,
-    //         "y": 6.16515857059915,
-    //         "z": -5.1788058280944895
-    //     },
-    //     objectId: 4252
-    // },
-    // 'sensor-4': {
-    //     name: 'Bedroom',
-    //     description: 'Basic sensor in the bedroom.',
-    //     groupName: 'Level 1',
-    //     location: {
-    //         "x": -6.158405517712083,
-    //         "y": 5.704175612634568,
-    //         "z": -5.178805828094482
-    //     },
-    //     objectId: 4252
-    // }
+    }
+    // Adicione outros sensores aqui...
 };
 
 const CHANNELS = {
@@ -64,15 +32,15 @@ const CHANNELS = {
     }
 };
 
-async function getSensors() {
+export async function getSensors() {
     return SENSORS;
 }
 
-async function getChannels() {
+export async function getChannels() {
     return CHANNELS;
 }
 
-async function getSamples(timerange, resolution = 32) {
+export async function getSamples(timerange, resolution = 32) {
     return {
         count: resolution,
         timestamps: generateTimestamps(timerange.start, timerange.end, resolution),
@@ -80,18 +48,6 @@ async function getSamples(timerange, resolution = 32) {
             'sensor-1': {
                 'temp': generateRandomValues(18.0, 28.0, resolution, 1.0),
                 'co2': generateRandomValues(540.0, 600.0, resolution, 5.0)
-            },
-            'sensor-2': {
-                'temp': generateRandomValues(20.0, 24.0, resolution, 1.0),
-                'co2': generateRandomValues(540.0, 600.0, resolution, 5.0)
-            },
-            'sensor-3': {
-                'temp': generateRandomValues(24.0, 28.0, resolution, 1.0),
-                'co2': generateRandomValues(500.0, 620.0, resolution, 5.0)
-            },
-            'sensor-4': {
-                'temp': generateRandomValues(20.0, 24.0, resolution, 1.0),
-                'co2': generateRandomValues(600.0, 640.0, resolution, 5.0)
             }
         }
     };
@@ -121,9 +77,3 @@ function generateRandomValues(min, max, count, maxDelta) {
     }
     return values;
 }
-
-module.exports = {
-    getSensors,
-    getChannels,
-    getSamples
-};

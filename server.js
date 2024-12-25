@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 const { getPublicToken } = require('./services/aps.js');
-const { getSensors, getChannels, getSamples } = require('./services/iot.mocked.js');
+const { getSensors, getChannels, getSamples } = require('./public/iot.mocked.js');
 const { PORT } = require('./config.js');
 
 let app = express();
@@ -58,6 +58,7 @@ app.get('/iot/channels', async function (req, res, next) {
 });
 
 app.get('/iot/samples', async function (req, res, next) {
+    console.log('888888888888888888888888888888888888req.query', req.query)
     try {
         res.json(await getSamples({ start: new Date(req.query.start), end: new Date(req.query.end) }, req.query.resolution));
     } catch (err) {
@@ -94,6 +95,50 @@ app.get('/api/sensors/latest', (req, res) => {
         res.status(200).json(row || {});
     });
 });
+
+
+// Nova rota para buscar dados agregados com base no intervalo de tempo e resolução
+app.post('/api/sensors/aggregate', (req, res) => {
+    const { start, end, resolution } = req.body;
+
+    if (!start || !end || !resolution) {
+        return res.status(400).send('Parâmetros "start", "end" e "resolution" são obrigatórios.');
+    }
+
+    const resolutionMs = resolution * 60 * 1000;
+
+    const query = `
+        SELECT
+            MIN(time) AS time,
+            AVG(temperature) AS temperature,
+            AVG(co2) AS co2
+        FROM sensors
+        WHERE time >= ? AND time <= ?
+        GROUP BY CAST((strftime('%s', time) / ?) AS INTEGER)
+        ORDER BY time ASC
+    `;
+
+    db.all(query, [start, end, resolutionMs / 1000], (err, rows) => {
+        if (err) {
+            console.error('Erro ao consultar o banco:', err.message);
+            return res.status(500).send('Erro ao consultar o banco.');
+        }
+
+        console.log('Resultados da query:', rows);
+
+        const timestamps = rows.map(row => row.time);
+        const data = rows.reduce((acc, row) => {
+            acc['sensor-1'] = acc['sensor-1'] || { temp: [], co2: [] };
+            acc['sensor-1'].temp.push(row.temperature);
+            acc['sensor-1'].co2.push(row.co2);
+            return acc;
+        }, {});
+
+        res.json({ timestamps, data });
+    });
+});
+
+
 
 // Tratamento de erros
 app.use((err, req, res, next) => {

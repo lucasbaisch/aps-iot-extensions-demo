@@ -28,6 +28,22 @@
         <input type="range" id="heatmap-slider" min="0" max="1" step="0.01" value="0.5">
         <span id="slider-value">0.5</span>
     </div> -->
+    <div id="controls" style="position: absolute; top: 10px; left: 10px; background-color: white; padding: 10px; border: 1px solid black; z-index: 1000;">
+        <label for="start-time">Start Time:</label>
+        <input type="datetime-local" id="start-time" />
+        <br />
+        <label for="end-time">End Time:</label>
+        <input type="datetime-local" id="end-time" />
+        <br />
+        <label for="resolution">Resolution (minutes):</label>
+        <input type="number" id="resolution" value="1" min="1" />
+        <br />
+        <button id="fetch-samples">Fetch Data</button>
+    </div>
+    <div id="output" style="position: absolute; top: 150px; left: 10px; background-color: white; padding: 10px; border: 1px solid black; z-index: 1000;">
+        <h4>Output:</h4>
+        <pre id="output-data"></pre>
+    </div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.2.2/browser/pixi.js"></script>
 	<script src="https://unpkg.com/chronos-etu@7.0.0/dist/chronos-etu.js"></script>

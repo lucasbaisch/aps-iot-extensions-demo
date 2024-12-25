@@ -78,7 +78,7 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
         if (this.isActive()) {
             const channelID = this.currentChannelID;
             await this._setupSurfaceShading(this.viewer.model);
-            console.log("createHeatmaps ------------------ ", this.getSensorValue)
+            // console.log("createHeatmaps ------------------ ", this.getSensorValue)
             this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, this.getSensorValue, { heatmapConfig: this.heatmapConfig });
         }
     }
@@ -88,13 +88,13 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
             console.log("updateHeatmaps acionado");
             const channelID = this.currentChannelID;
             if (!this._surfaceShadingData) {
-                console.log("No surface shading data found. Setting up...");
+                // console.log("No surface shading data found. Setting up...");
                 await this._setupSurfaceShading(this.viewer.model);
-                console.log("Using value for renderSurfaceShading:", value);
+                // console.log("Using value for renderSurfaceShading:", value);
                 this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, value, { heatmapConfig: this.heatmapConfig });
             } else {
-                console.log("Surface shading data found. Updating...");
-                console.log("Using value for updateSurfaceShading:", value);
+                // console.log("Surface shading data found. Updating...");
+                // console.log("Using value for updateSurfaceShading:", value);
                 this._dataVizExt.updateSurfaceShading(value);
             }
         } else {

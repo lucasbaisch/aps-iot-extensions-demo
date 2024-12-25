@@ -14,6 +14,7 @@ import {
     DEFAULT_TIMERANGE_START,
     DEFAULT_TIMERANGE_END
 } from './config.js';
+import { getSamples } from './iot.mocked.js';
 
 const EXTENSIONS = [
     SensorListExtensionID,
@@ -23,6 +24,7 @@ const EXTENSIONS = [
     'Autodesk.AEC.LevelsExtension'
 ];
 
+let dataView; // Declare o dataView no escopo global
 const viewer = await initViewer(document.getElementById('preview'), EXTENSIONS);
 loadModel(viewer, APS_MODEL_URN, APS_MODEL_VIEW);
 viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
@@ -33,7 +35,7 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     window.sensorHeatmapsExt = sensorHeatmapsExt;
 
     // Initialize our data view
-    const dataView = new MyDataView();
+    dataView = new MyDataView();
     await dataView.init({ start: DEFAULT_TIMERANGE_START, end: DEFAULT_TIMERANGE_END });
 
     // Configure and activate our custom IoT extensions
@@ -89,7 +91,18 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
         try {
             const response = await fetch('/api/sensors/latest');
             if (!response.ok) throw new Error('Erro ao buscar os dados do servidor.');
-            const latestData = await response.json();
+            let latestData = await response.json();
+            console.log('Último valor dos sensores:', latestData);
+
+            // Mapeia os valores para os campos esperados
+            const maxTemperature = 28.0;
+            const minTemperature = 18.0;
+            const maxCO2 = 640.0;
+            const minCO2 = 482.81;
+            latestData.temperature = (latestData.temperature - minTemperature) / (maxTemperature - minTemperature);
+            latestData.co2 = (latestData.co2 - minCO2) / (maxCO2 - minCO2);
+
+
             return latestData;
         } catch (err) {
             console.error('Erro ao buscar o valor mais recente:', err);
@@ -102,12 +115,13 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
         fetchLatestSensorData().then((data) => {
             if (data) {
                 const { temperature, co2 } = data; // Ajuste conforme necessário
-                console.log('temperature, co2', temperature, co2)
-                const customSensorValue = () => temperature; // Usar temperatura como exemplo
+                let customSensorValue = () => temperature; // Usar temperatura como exemplo
+                console.log(`Último valor dos sensores salvos: temperatura: ${temperature}, co2: ${co2}`);
+
 
                 if (window.sensorHeatmapsExt) {
                     window.sensorHeatmapsExt.updateHeatmaps(customSensorValue);
-                    console.log(`Heatmap updated with temperature: ${temperature}, co2: ${co2}`);
+                    // console.log(`Heatmap updated with temperature: ${temperature}, co2: ${co2}`);
                 } else {
                     console.error('Heatmap extension not loaded.');
                 }
@@ -116,8 +130,50 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     }
 
     // Configura para buscar o último valor a cada 5 segundos (5000 ms)
-    setInterval(updateHeatmapWithLatestData, 500);
+    setInterval(updateHeatmapWithLatestData, 5000);
 });
+
+document.getElementById('fetch-samples').addEventListener('click', async () => {
+    try {
+        const start = document.getElementById('start-time').value;
+        const end = document.getElementById('end-time').value;
+        const resolution = parseInt(document.getElementById('resolution').value, 10);
+
+        if (!start || !end || !resolution) {
+            alert('Preencha todos os campos: Start Time, End Time e Resolution.');
+            return;
+        }
+
+        // Formatar o timerange
+        const timerange = {
+            start: new Date(start),
+            end: new Date(end)
+        };
+
+        // Atualizar o dataView com os novos samples
+        await dataView.refresh(timerange, resolution);
+
+        // Atualizar extensões conectadas ao viewer
+        const extensions = [
+            viewer.getExtension(SensorListExtensionID),
+            viewer.getExtension(SensorSpritesExtensionID),
+            viewer.getExtension(SensorDetailExtensionID),
+            viewer.getExtension(SensorHeatmapsExtensionID)
+        ];
+        extensions.forEach(ext => {
+            ext.dataView = dataView; // Vincular o dataView atualizado às extensões
+            if (ext.refresh) ext.refresh(); // Certifique-se de que a extensão possui o método refresh
+        });
+
+        // console.log('DataView atualizado com os novos samples:', dataView.getSamples());
+        // alert('Data atualizado com sucesso!');
+    } catch (error) {
+        console.error('Erro ao buscar e atualizar os dados:', error);
+        alert('Erro ao buscar e atualizar os dados.');
+    }
+});
+
+
 
 window.getBoundingBox = function (model, dbid) {
     const tree = model.getInstanceTree();
