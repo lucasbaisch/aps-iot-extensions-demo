@@ -49,22 +49,45 @@ export class SensorDetailPanel extends Autodesk.Viewing.UI.DockingPanel {
     }
 
     _createChart(canvas, timestamps, values, min, max, title) {
+        console.log("Timestamps recebidos:", timestamps)
         return new Chart(canvas.getContext('2d'), {
             type: 'line',
             data: {
-                labels: timestamps.map(timestamp => timestamp.toLocaleDateString()),
+                // labels: timestamps.map(timestamp => timestamp.toLocaleDateString()),
+                labels: timestamps, // Use os timestamps diretamente
                 datasets: [{
-                        label: title,
-                        data: values,
-                        radius: values.map(_ => 3),
-                        fill: false,
-                        borderColor: '#eee',
-                        color: '#eee',
-                        tension: 0.1
-                    }],
-                options: {
-                    scales: {
-                        y: { min, max }
+                    label: title,
+                    data: values,
+                    radius: values.map(_ => 3),
+                    fill: false,
+                    borderColor: '#eee',
+                    color: '#eee',
+                    tension: 0.1
+                }],
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time', // Escala de tempo
+                        time: {
+                            tooltipFormat: 'YYYY-MM-DD HH:mm', // Tooltip format
+                            displayFormats: {
+                                minute: 'YYYY-MM-DD HH:mm', // Formato exibido no eixo
+                                hour: 'YYYY-MM-DD HH:mm',
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Timestamp'
+                        }
+                    },
+                    y: {
+                        min,
+                        max,
+                        title: {
+                            display: true,
+                            text: 'Sensor Value'
+                        }
                     }
                 }
             }

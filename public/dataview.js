@@ -59,17 +59,16 @@ export class MyDataView {
     }
 
     async _loadSamples(timerange, resolution) {
-        const { start, end } = timerange;
+        let { start, end } = timerange;
         console.log('Chamando _loadSamples com:', { start, end, resolution }); // Log para depuração
+
     
         // Alterar para usar o POST na rota /api/sensors/aggregate
         const { timestamps, data } = await this._post('/api/sensors/aggregate', {
-            start: start.toISOString(),
-            end: end.toISOString(),
+            start: start, // Alterar para usar start: start.
+            end: end, // Alterar para usar end: end.
             resolution
         });
-    
-        console.log('Resposta da API /api/sensors/aggregate:', { timestamps, data }); // Log para depuração
     
         this._timestamps = timestamps.map(str => new Date(str));
         this._data = data;

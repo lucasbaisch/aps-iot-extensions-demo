@@ -22,8 +22,9 @@ const db = new sqlite3.Database('./sensor_data.db', (err) => {
 db.run(
     `CREATE TABLE IF NOT EXISTS sensors (
         time TEXT PRIMARY KEY,
-        temperature REAL,
-        co2 REAL
+        temp REAL,
+        umidade REAL,
+        co REAL
     )`,
     (err) => {
         if (err) {
@@ -68,14 +69,19 @@ app.get('/iot/samples', async function (req, res, next) {
 
 // Nova rota para salvar dados no banco via POST
 app.post('/api/sensors', (req, res) => {
-    const { time, temperature, co2 } = req.body;
+    let { time, temp, umidade, co } = req.body;
 
-    if (!time || temperature === undefined || co2 === undefined) {
-        return res.status(400).send('Campos "time", "temperature" e "co2" são obrigatórios.');
+    if (!time || temp === undefined || umidade === undefined || co === undefined) {
+        return res.status(400).send('Campos "time", "temp", "umidade" e "co" são obrigatórios.');
     }
 
-    const query = `INSERT INTO sensors (time, temperature, co2) VALUES (?, ?, ?)`;
-    db.run(query, [time, temperature, co2], (err) => {
+    // convert time epoch str to brazil timezone on format yyyy-MM-dd HH:mm:ss
+    let date = new Date(parseInt(time) * 1000);
+    date.setHours(date.getHours() - 3);
+    time = date.toISOString();
+
+    const query = `INSERT INTO sensors (time, temp, umidade, co) VALUES (?, ?, ?, ?)`;
+    db.run(query, [time, temp, umidade, co], (err) => {
         if (err) {
             console.error('Erro ao inserir dados:', err.message);
             return res.status(500).send('Erro ao salvar os dados.');
@@ -96,10 +102,9 @@ app.get('/api/sensors/latest', (req, res) => {
     });
 });
 
-
 // Nova rota para buscar dados agregados com base no intervalo de tempo e resolução
 app.post('/api/sensors/aggregate', (req, res) => {
-    const { start, end, resolution } = req.body;
+    let { start, end, resolution } = req.body;
 
     if (!start || !end || !resolution) {
         return res.status(400).send('Parâmetros "start", "end" e "resolution" são obrigatórios.');
@@ -110,13 +115,22 @@ app.post('/api/sensors/aggregate', (req, res) => {
     const query = `
         SELECT
             MIN(time) AS time,
-            AVG(temperature) AS temperature,
-            AVG(co2) AS co2
+            AVG(temp) AS temp,
+            AVG(umidade) AS umidade,
+            AVG(co) AS co
         FROM sensors
-        WHERE time >= ? AND time <= ?
+        WHERE datetime(time) >= datetime(?) AND datetime(time) <= datetime(?)
         GROUP BY CAST((strftime('%s', time) / ?) AS INTEGER)
         ORDER BY time ASC
     `;
+
+    // convert start and end to america sao paulo timezone, substrac 3 hours
+    start = new Date(start);
+    start.setHours(start.getHours() - 3);
+    start = start.toISOString();
+    end = new Date(end);
+    end.setHours(end.getHours() - 3);
+    end = end.toISOString();
 
     db.all(query, [start, end, resolutionMs / 1000], (err, rows) => {
         if (err) {
@@ -128,17 +142,16 @@ app.post('/api/sensors/aggregate', (req, res) => {
 
         const timestamps = rows.map(row => row.time);
         const data = rows.reduce((acc, row) => {
-            acc['sensor-1'] = acc['sensor-1'] || { temp: [], co2: [] };
-            acc['sensor-1'].temp.push(row.temperature);
-            acc['sensor-1'].co2.push(row.co2);
+            acc['sensor-1'] = acc['sensor-1'] || { temp: [], umidade: [], co: [] };
+            acc['sensor-1'].temp.push(row.temp);
+            acc['sensor-1'].umidade.push(row.umidade);
+            acc['sensor-1'].co.push(row.co);
             return acc;
         }, {});
 
         res.json({ timestamps, data });
     });
 });
-
-
 
 // Tratamento de erros
 app.use((err, req, res, next) => {

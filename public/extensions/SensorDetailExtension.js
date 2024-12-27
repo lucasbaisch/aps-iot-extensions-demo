@@ -30,6 +30,7 @@ export class SensorDetailExtension extends UIBaseExtension {
     updateCursor() {
         if (this.dataView && this.panel && this.currentSensorID && this.currentTime) {
             const sensor = this.dataView.getSensors().get(this.currentSensorID);
+            console.log('updateCursor46546546546546465465', sensor);
             if (sensor) {
                 this.panel.updateCursor(this.currentSensorID, this.dataView, this.currentTime);
             }

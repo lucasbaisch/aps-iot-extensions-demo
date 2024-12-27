@@ -14,7 +14,34 @@ import {
     DEFAULT_TIMERANGE_START,
     DEFAULT_TIMERANGE_END
 } from './config.js';
-import { getSamples } from './iot.mocked.js';
+// const moment = require('moment-timezone');
+
+let currentChannelID = '';
+moment.tz.setDefault('America/Sao_Paulo');
+
+
+// Inicialize o Flatpickr no campo com ID "datetime-range"
+const startPicker = flatpickr("#start-time", {
+    enableTime: true,
+    defaultDate: DEFAULT_TIMERANGE_START,
+    dateFormat: "Y-m-d H:i",
+    time_24hr: true,
+    onChange: function(selectedDates, dateStr, instance) {
+        endPicker.set("minDate", selectedDates[0]); // Define a data mínima para o campo final
+    },
+});
+
+const endPicker = flatpickr("#end-time", {
+    enableTime: true,
+    defaultDate: DEFAULT_TIMERANGE_END,
+    dateFormat: "Y-m-d H:i",
+    time_24hr: true,
+    onChange: function(selectedDates, dateStr, instance) {
+        startPicker.set("maxDate", selectedDates[0]); // Define a data máxima para o campo inicial
+    }
+});
+
+
 
 const EXTENSIONS = [
     SensorListExtensionID,
@@ -27,6 +54,7 @@ const EXTENSIONS = [
 let dataView; // Declare o dataView no escopo global
 const viewer = await initViewer(document.getElementById('preview'), EXTENSIONS);
 loadModel(viewer, APS_MODEL_URN, APS_MODEL_VIEW);
+
 viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     // Initialize the timeline
     initTimeline(document.getElementById('timeline'), onTimeRangeChanged, onTimeMarkerChanged);
@@ -44,8 +72,8 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
         ext.dataView = dataView;
         ext.activate();
     }
-    adjustPanelStyle(viewer.getExtension(SensorListExtensionID).panel, { right: '10px', top: '10px', width: '500px', height: '300px' });
-    adjustPanelStyle(viewer.getExtension(SensorDetailExtensionID).panel, { right: '10px', top: '320px', width: '500px', height: '300px' });
+    adjustPanelStyle(viewer.getExtension(SensorListExtensionID).panel, { left: '10px', top: '480px', width: '500px', height: '150px' });
+    adjustPanelStyle(viewer.getExtension(SensorDetailExtensionID).panel, { right: '10px', top: '10px', width: '500px', height: '300px' });
     adjustPanelStyle(viewer.getExtension(SensorHeatmapsExtensionID).panel, { left: '10px', top: '320px', width: '300px', height: '150px' });
 
     // Configure and activate the levels extension
@@ -83,6 +111,7 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     }
 
     function onCurrentChannelChanged(channelId) {
+        currentChannelID = channelId;
         extensions.forEach(ext => ext.currentChannelID = channelId);
     }
 
@@ -97,10 +126,10 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
             // Mapeia os valores para os campos esperados
             const maxTemperature = 28.0;
             const minTemperature = 18.0;
-            const maxCO2 = 640.0;
-            const minCO2 = 482.81;
-            latestData.temperature = (latestData.temperature - minTemperature) / (maxTemperature - minTemperature);
-            latestData.co2 = (latestData.co2 - minCO2) / (maxCO2 - minCO2);
+            const maxumidade = 640.0;
+            const minumidade = 482.81;
+            latestData.temp = (latestData.temp - minTemperature) / (maxTemperature - minTemperature);
+            latestData.umidade = (latestData.umidade - minumidade) / (maxumidade - minumidade);
 
 
             return latestData;
@@ -114,41 +143,51 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     function updateHeatmapWithLatestData() {
         fetchLatestSensorData().then((data) => {
             if (data) {
-                const { temperature, co2 } = data; // Ajuste conforme necessário
-                let customSensorValue = () => temperature; // Usar temperatura como exemplo
-                console.log(`Último valor dos sensores salvos: temperatura: ${temperature}, co2: ${co2}`);
+                console.log("Dados do sensor: ", data, "Canal atual: ", currentChannelID);
+                const customSensorValue = () => data[currentChannelID];
+                console.log("Valor do sensor: ", customSensorValue);
 
 
                 if (window.sensorHeatmapsExt) {
                     window.sensorHeatmapsExt.updateHeatmaps(customSensorValue);
-                    // console.log(`Heatmap updated with temperature: ${temperature}, co2: ${co2}`);
+                    // console.log(`Heatmap updated with temperature: ${temp}, umidade: ${umidade}`);
                 } else {
                     console.error('Heatmap extension not loaded.');
                 }
             }
         });
     }
-
     // Configura para buscar o último valor a cada 5 segundos (5000 ms)
     setInterval(updateHeatmapWithLatestData, 5000);
 });
 
 document.getElementById('fetch-samples').addEventListener('click', async () => {
     try {
-        const start = document.getElementById('start-time').value;
-        const end = document.getElementById('end-time').value;
-        const resolution = parseInt(document.getElementById('resolution').value, 10);
+        // Obter os valores dos campos Flatpickr
+        let start = document.getElementById('start-time').value;
+        start = moment.tz(start, 'America/Sao_Paulo').format();
 
-        if (!start || !end || !resolution) {
-            alert('Preencha todos os campos: Start Time, End Time e Resolution.');
+        let end = document.getElementById('end-time').value;
+        end = moment.tz(end, 'America/Sao_Paulo').format();
+        const resolution = parseInt(document.getElementById('resolution').value, 10);
+        console.log('Fetching samples:', { start, end, resolution });
+        // Validar os campos
+        if (!start || !end || isNaN(resolution) || resolution <= 0) {
+            alert('Preencha todos os campos corretamente: Start Time, End Time e Resolution.');
             return;
         }
 
-        // Formatar o timerange
+        // Converter os valores para objetos de data
         const timerange = {
             start: new Date(start),
-            end: new Date(end)
+            end: new Date(end),
         };
+
+        // Validar se a data inicial é menor que a final
+        if (timerange.start >= timerange.end) {
+            alert('A data/hora inicial deve ser anterior à data/hora final.');
+            return;
+        }
 
         // Atualizar o dataView com os novos samples
         await dataView.refresh(timerange, resolution);
@@ -165,13 +204,13 @@ document.getElementById('fetch-samples').addEventListener('click', async () => {
             if (ext.refresh) ext.refresh(); // Certifique-se de que a extensão possui o método refresh
         });
 
-        // console.log('DataView atualizado com os novos samples:', dataView.getSamples());
-        // alert('Data atualizado com sucesso!');
+        console.log('DataView atualizado com os novos samples:', dataView.getSamples());
     } catch (error) {
         console.error('Erro ao buscar e atualizar os dados:', error);
         alert('Erro ao buscar e atualizar os dados.');
     }
 });
+
 
 
 

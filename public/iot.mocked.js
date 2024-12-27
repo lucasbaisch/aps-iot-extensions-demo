@@ -1,7 +1,7 @@
 const SENSORS = {
     'sensor-1': {
-        name: 'Living Room',
-        description: 'Basic sensor in the middle of the living room.',
+        name: 'Sensor',
+        description: 'Basic temperature sensor in the middle of the living room.',
         groupName: 'Level 1',
         location: {
             "x": 1.2737443865427096,
@@ -9,8 +9,7 @@ const SENSORS = {
             "z": -5.1788058280944895
         },
         objectId: 4252
-    }
-    // Adicione outros sensores aqui...
+    },
 };
 
 const CHANNELS = {
@@ -22,14 +21,23 @@ const CHANNELS = {
         min: 18.0,
         max: 28.0
     },
-    'co2': {
-        name: 'CO₂',
+    'umidade': {
+        name: 'umidade',
         description: 'Level of carbon dioxide.',
         type: 'double',
         unit: 'ppm',
         min: 482.81,
         max: 640.00
+    },
+    'co': {
+        name: 'monoxido de carbono',
+        description: 'Level of oxigen.',
+        type: 'double',
+        unit: 'ppm',
+        min: 0,
+        max: 1000
     }
+
 };
 
 export async function getSensors() {
@@ -47,7 +55,8 @@ export async function getSamples(timerange, resolution = 32) {
         data: {
             'sensor-1': {
                 'temp': generateRandomValues(18.0, 28.0, resolution, 1.0),
-                'co2': generateRandomValues(540.0, 600.0, resolution, 5.0)
+                'umidade': generateRandomValues(482.81, 640.0, resolution, 1.0),
+                'co': generateRandomValues(0, 1000, resolution, 1.0),
             }
         }
     };

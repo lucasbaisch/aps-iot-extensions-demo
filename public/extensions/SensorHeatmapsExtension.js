@@ -1,7 +1,6 @@
 /// import * as Autodesk from "@types/forge-viewer";
 
 import { UIBaseExtension } from './BaseExtension.js';
-import { findNearestTimestampIndex } from './HistoricalDataView.js';
 import { SensorHeatmapsPanel } from './SensorHeatmapsPanel.js';
 
 export const SensorHeatmapsExtensionID = 'IoT.SensorHeatmaps';
@@ -12,22 +11,9 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
         this.panel = undefined;
         this._surfaceShadingData = undefined;
         this.onChannelChanged = undefined;
-        this.getSensorValue = this.getSensorValue.bind(this);
         this.heatmapConfig = {
-            /*
-            The distance from the sensor that its value will affect the heatmap before dropping off.
-            Measured in world coordinates of the current model. The default value is 160.0.
-            */
             confidence: 50.0,
-            /*
-            A positive real number. Greater values of power parameter assign greater influence to values
-            closest to the interpolated point. The default value is 2.0.
-            */
             powerParameter: 2.0,
-            /*
-            The transparency level of the resulting fragment on the heatmap, ranging from 0.0 (completely transparent)
-            to 1.0 (fully opaque). The default value is 1.0.
-            */
             alpha: 1.0
         };
     }
@@ -37,64 +23,27 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
         this.createHeatmaps();
     }
 
-    onCurrentTimeChanged(oldTime, newTime) { this.updateHeatmaps(); }
+    onCurrentTimeChanged(oldTime, newTime) { this.updateHeatmapWithLatestData(); }
 
-    onCurrentChannelChanged(oldChannelID, newChannelID) { this.updateHeatmaps(); }
-
-    getSensorValue(surfaceShadingPoint, sensorType) {
-        if (!this.dataView || !this.currentTime || !this.currentChannelID) {
-            return Number.NaN;
-        }
-        const sensor = this.dataView.getSensors().get(surfaceShadingPoint.id);
-        if (!sensor) {
-            return Number.NaN;
-        }
-        const channel = this.dataView.getChannels().get(this.currentChannelID);
-        if (!channel) {
-            return Number.NaN;
-        }
-        const samples = this.dataView.getSamples(surfaceShadingPoint.id, this.currentChannelID);
-        if (!samples) {
-            return Number.NaN;
-        }
-        const fractionalIndex = findNearestTimestampIndex(samples.timestamps, this.currentTime, true);
-        const index1 = Math.floor(fractionalIndex);
-        const index2 = Math.ceil(fractionalIndex);
-        if (index1 !== index2) {
-            const value = samples.values[index1] + (samples.values[index2] - samples.values[index1]) * (fractionalIndex - index1);
-            let return_value = (value - channel.min) / (channel.max - channel.min);
-            console.log("Retornando o valor ", return_value);
-            return return_value;
-        }
-        else {
-            const value = samples.values[index1];
-            let return_value = (value - channel.min) / (channel.max - channel.min);
-            console.log("Retornando o valor ", return_value);
-            return return_value;
-        }
-    }
+    onCurrentChannelChanged(oldChannelID, newChannelID) { this.updateHeatmapWithLatestData(); }
 
     async createHeatmaps() {
         if (this.isActive()) {
             const channelID = this.currentChannelID;
             await this._setupSurfaceShading(this.viewer.model);
-            // console.log("createHeatmaps ------------------ ", this.getSensorValue)
-            this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, this.getSensorValue, { heatmapConfig: this.heatmapConfig });
+            this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, this.fetchLatestSensorData, { heatmapConfig: this.heatmapConfig });
         }
     }
 
-    async updateHeatmaps(value = this.getSensorValue) {
+    async updateHeatmaps(value) {
         if (this.isActive()) {
-            console.log("updateHeatmaps acionado");
+            console.log("updateHeatmaps acionado", Date.now());
             const channelID = this.currentChannelID;
             if (!this._surfaceShadingData) {
-                // console.log("No surface shading data found. Setting up...");
                 await this._setupSurfaceShading(this.viewer.model);
-                // console.log("Using value for renderSurfaceShading:", value);
                 this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, value, { heatmapConfig: this.heatmapConfig });
             } else {
-                // console.log("Surface shading data found. Updating...");
-                // console.log("Using value for updateSurfaceShading:", value);
+                // printar o valor padrão
                 this._dataVizExt.updateSurfaceShading(value);
             }
         } else {
@@ -102,6 +51,46 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
         }
     }
 
+    // Função para buscar o último valor do servidor
+    async fetchLatestSensorData() {
+        try {
+            
+            if (!this.dataView || !this.currentTime || !this.currentChannelID) {
+                return Number.NaN;
+            }
+
+            const response = await fetch('/api/sensors/latest');
+            if (!response.ok) throw new Error('Erro ao buscar os dados do servidor.');
+            let latestData = await response.json();
+            console.log('Último valor dos sensores:', latestData);
+
+            const channel = this.dataView.getChannels().get(this.currentChannelID);
+            if (!channel) {
+                throw new Error('Canal não encontrado.');
+            }
+
+            latestData.temperature = (latestData.temperature - channel.min) / (channel.max - channel.min);
+            latestData.umidade = (latestData.umidade - channel.min) / (channel.max - channel.min);
+
+            return latestData;
+        } catch (err) {
+            console.error('Erro ao buscar o valor mais recente:', err);
+            return null;
+        }
+    }
+
+    // Função para atualizar o heatmap com o último valor do servidor
+    updateHeatmapWithLatestData() {
+        this.fetchLatestSensorData().then((data) => {
+            if (data) {
+                console.log("Dados do sensor: ", data, "Canal atual: ", this.currentChannelID);
+                const customSensorValue = () => data[this.currentChannelID];
+                console.log("Valor do sensor: ", customSensorValue);
+
+                this.updateHeatmaps(customSensorValue);
+            }
+        });
+    }
 
     updateChannels() {
         if (this.dataView && this.panel) {
@@ -170,6 +159,5 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
         this._surfaceShadingData.addChild(shadingGroup);
         this._surfaceShadingData.initialize(model);
         await this._dataVizExt.setupSurfaceShading(model, this._surfaceShadingData);
-        // this._dataVizExt.registerSurfaceShadingColors('temp', [0x00ff00, 0xffff00, 0xff0000]);
     }
 }

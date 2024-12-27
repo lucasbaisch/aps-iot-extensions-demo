@@ -1,3 +1,4 @@
+/* Corpo e layout geral */
 html, body {
     margin: 0;
     padding: 0;
@@ -5,39 +6,87 @@ html, body {
     height: 100vh;
     background-color: #333;
     color: #eee;
+    font-family: Arial, sans-serif;
 }
 
-#header, #preview, #timeline {
+/* Estilo do Header */
+#header {
+    position: fixed; /* Fixo no topo */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%; /* Garante que o header ocupe a largura total */
+    height: auto;
+    padding: 1em;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+    gap: 1em; /* Espaço entre os itens */
+    z-index: 10; /* Mantém o header acima de outros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
+
+/* Ajuste do Preview */
+#preview {
+    top: calc(3em + 2em); /* Considera a altura do header */
+    bottom: 100px;
     position: absolute;
     left: 0;
     right: 0;
 }
 
-#header {
-    top: 0;
-    height: 3em;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-}
-
-#preview {
-    top: 3em;
-    bottom: 100px;
-}
-
+/* Ajuste do Timeline */
 #timeline {
     bottom: 0;
     height: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
-#header > * {
-    height: 2em;
-    margin: 0 0.5em;
+/* Estilo do Select */
+#resolution {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: #555;
+    color: #eee;
     font-size: 1em;
-    font-family: ArtifaktElement;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 150px; /* Tamanho mínimo para consistência */
 }
 
-#header .title {
-    height: auto;
+#resolution:hover {
+    background-color: #666;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+#resolution:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilo do Botão */
+#fetch-samples {
+    padding: 0.5em 1.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#fetch-samples:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Efeito de zoom no hover */
+}
+
+#fetch-samples:active {
+    background-color: #003f7f;
+    transform: scale(0.95); /* Efeito de clique */
+}
+
