@@ -27,29 +27,59 @@ export class SensorDetailPanel extends Autodesk.Viewing.UI.DockingPanel {
         this.container.appendChild(this.content);
     }
 
-    updateCharts(sensorId, dataView) {
+    updateCharts(sensorId, dataView, currentChannelID) {
         this.content.innerHTML = '';
         this._charts = [];
         const chartHeight = 200;
         let contentHeight = 0;
         let canvases = [];
-        for (const [channelId, channel] of dataView.getChannels().entries()) {
+        const channel = dataView.getChannels().get(currentChannelID);
+        if (channel) {
             contentHeight += chartHeight;
-            const top = 50 + canvases.length * chartHeight;
-            canvases.push(`<canvas id="sensor-detail-chart-${channelId}" style="position: absolute; left: 0; top: ${top}px; width: 100%; height: ${chartHeight}px;"></canvas>`);
+            const top = 50;
+            canvases.push(`<canvas id="sensor-detail-chart-${currentChannelID}" style="position: absolute; left: 0; top: ${top}px; width: 100%; height: ${chartHeight}px;"></canvas>`);
         }
         this.content.style.height = `${contentHeight}px`;
         this.container.style.height = `${contentHeight + 50}px`;
         this.content.innerHTML = canvases.join('\n');
-        for (const [channelId, channel] of dataView.getChannels().entries()) {
-            const canvas = document.getElementById(`sensor-detail-chart-${channelId}`);
-            const samples = dataView.getSamples(sensorId, channelId);
-            this._charts.push(this._createChart(canvas, (samples === null || samples === void 0 ? void 0 : samples.timestamps) || [], (samples === null || samples === void 0 ? void 0 : samples.values) || [], channel.min, channel.max, `${channel.name} (${channel.unit})`));
+        if (channel) {
+            const canvas = document.getElementById(`sensor-detail-chart-${currentChannelID}`);
+            const samples = dataView.getSamples(sensorId, currentChannelID);
+            this._charts.push(this._createChart(canvas, (samples?.timestamps) || [], (samples?.values) || [], channel.min, channel.max, `${channel.name} (${channel.unit})`));
         }
     }
 
+    updateChartsWithLatestData(sensorId, dataView, currentChannelID, latestData) {
+        const channel = dataView.getChannels().get(currentChannelID);
+        if (!channel) return;
+    
+        // Substituir todos os dados do gráfico com os novos dados
+        const timestamps = latestData.timestamps;
+        const values = latestData.values;
+    
+        this.content.innerHTML = '';
+        this._charts = [];
+        const chartHeight = 200;
+        let contentHeight = chartHeight;
+        const canvasId = `sensor-detail-chart-${currentChannelID}`;
+        const canvas = `<canvas id="${canvasId}" style="position: absolute; left: 0; top: 50px; width: 100%; height: ${chartHeight}px;"></canvas>`;
+        this.content.style.height = `${contentHeight}px`;
+        this.container.style.height = `${contentHeight + 50}px`;
+        this.content.innerHTML = canvas;
+    
+        const canvasElement = document.getElementById(canvasId);
+        this._charts.push(this._createChart(
+            canvasElement,
+            timestamps,
+            values,
+            channel.min,
+            channel.max,
+            `${channel.name} (${channel.unit})`
+        ));
+    }
+
     _createChart(canvas, timestamps, values, min, max, title) {
-        console.log("Timestamps recebidos:", timestamps)
+        // console.log("Timestamps recebidos:", timestamps)
         return new Chart(canvas.getContext('2d'), {
             type: 'line',
             data: {
@@ -82,8 +112,8 @@ export class SensorDetailPanel extends Autodesk.Viewing.UI.DockingPanel {
                         }
                     },
                     y: {
-                        min,
-                        max,
+                        // min,
+                        // max,
                         title: {
                             display: true,
                             text: 'Sensor Value'

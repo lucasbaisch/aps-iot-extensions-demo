@@ -60,7 +60,6 @@ app.get('/iot/channels', async function (req, res, next) {
 });
 
 app.get('/iot/samples', async function (req, res, next) {
-    console.log('888888888888888888888888888888888888req.query', req.query)
     try {
         res.json(await getSamples({ start: new Date(req.query.start), end: new Date(req.query.end) }, req.query.resolution));
     } catch (err) {
@@ -139,8 +138,6 @@ app.post('/api/sensors/aggregate', (req, res) => {
             console.error('Erro ao consultar o banco:', err.message);
             return res.status(500).send('Erro ao consultar o banco.');
         }
-
-        console.log('Resultados da query:', rows);
 
         const timestamps = rows.map(row => row.time);
         const data = rows.reduce((acc, row) => {

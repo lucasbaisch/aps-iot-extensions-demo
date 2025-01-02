@@ -23,21 +23,21 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
         this.createHeatmaps();
     }
 
-    onCurrentTimeChanged(oldTime, newTime) { this.updateHeatmapWithLatestData(); }
+    onCurrentTimeChanged(oldTime, newTime) { this.refresh(); }
 
-    onCurrentChannelChanged(oldChannelID, newChannelID) { this.updateHeatmapWithLatestData(); }
+    onCurrentChannelChanged(oldChannelID, newChannelID) { this.refresh(); }
 
     async createHeatmaps() {
         if (this.isActive()) {
             const channelID = this.currentChannelID;
             await this._setupSurfaceShading(this.viewer.model);
-            this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, this.fetchLatestSensorData, { heatmapConfig: this.heatmapConfig });
+            this._dataVizExt.renderSurfaceShading('iot-heatmap', channelID, () => this.getLastSensorData(), { heatmapConfig: this.heatmapConfig });
         }
     }
 
     async updateHeatmaps(value) {
         if (this.isActive()) {
-            console.log("updateHeatmaps acionado", Date.now());
+            // console.log("updateHeatmaps acionado", Date.now(), value, "canal atual: ", this.currentChannelID);
             const channelID = this.currentChannelID;
             if (!this._surfaceShadingData) {
                 await this._setupSurfaceShading(this.viewer.model);
@@ -47,55 +47,68 @@ export class SensorHeatmapsExtension extends UIBaseExtension {
                 this._dataVizExt.updateSurfaceShading(value);
             }
         } else {
-            console.log("Heatmaps extension is not active.");
+            // console.log("Heatmaps extension is not active.");
         }
     }
 
     // Função para buscar o último valor do servidor
-    async fetchLatestSensorData() {
+    getLastSensorData() {
         try {
+            // console.log('Último valor dos sensores 1234657984654798798798798798987')
             
             if (!this.dataView || !this.currentTime || !this.currentChannelID) {
                 return Number.NaN;
             }
 
-            const response = await fetch('/api/sensors/latest');
-            if (!response.ok) throw new Error('Erro ao buscar os dados do servidor.');
-            let latestData = await response.json();
-            console.log('Último valor dos sensores:', latestData);
+            let data = this.dataView._data;
+            // console.log('Último valor dos sensores 4566666666666666666:', data);
 
             const channel = this.dataView.getChannels().get(this.currentChannelID);
             if (!channel) {
                 throw new Error('Canal não encontrado.');
             }
 
-            latestData.temperature = (latestData.temperature - channel.min) / (channel.max - channel.min);
-            latestData.umidade = (latestData.umidade - channel.min) / (channel.max - channel.min);
+            let last_value = data['sensor-1'][this.currentChannelID][data['sensor-1'][this.currentChannelID].length - 1];
 
-            return latestData;
+
+            last_value = (last_value - channel.min) / (channel.max - channel.min);
+
+            const customSensorValue = () => last_value;
+            // console.log("Valor do sensor: ", customSensorValue);
+
+            this.updateHeatmaps(customSensorValue);
+            
+
+            return last_value;
         } catch (err) {
             console.error('Erro ao buscar o valor mais recente:', err);
             return null;
         }
     }
 
-    // Função para atualizar o heatmap com o último valor do servidor
-    updateHeatmapWithLatestData() {
-        this.fetchLatestSensorData().then((data) => {
-            if (data) {
-                console.log("Dados do sensor: ", data, "Canal atual: ", this.currentChannelID);
-                const customSensorValue = () => data[this.currentChannelID];
-                console.log("Valor do sensor: ", customSensorValue);
+    // updateHeatmapWithLatestData() {
+        // get lest data of this.dataView
+        // let latestData = this.getLastSensorData();
+        // this.getLastSensorData().then((data) => {
+        //     if (data) {
+        //         console.log("Dados do sensor: ", data, "Canal atual: ", this.currentChannelID);
+        //         const customSensorValue = () => data[this.currentChannelID];
+        //         console.log("Valor do sensor: ", customSensorValue);
 
-                this.updateHeatmaps(customSensorValue);
-            }
-        });
-    }
+        //         this.updateHeatmaps(customSensorValue);
+        //     }
+        // });
+    // }
 
     updateChannels() {
         if (this.dataView && this.panel) {
             this.panel.updateChannels(this.dataView);
         }
+    }
+
+    refresh() {
+        // console.log("Refresh acionado", Date.now());
+        this.updateHeatmaps(() => this.getLastSensorData());
     }
 
     async load() {

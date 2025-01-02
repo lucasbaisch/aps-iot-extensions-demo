@@ -27,6 +27,9 @@ def fill_db_with_fake_data(db_path, start, end, resolution):
         )
     ''')
     
+    # Apaga todos os dados existentes na tabela
+    cursor.execute('DELETE FROM sensors')
+    
     fake_data = generate_fake_data(start, end, resolution)
     cursor.executemany('INSERT INTO sensors (time, temp, umidade, co, ruido) VALUES (?, ?, ?, ?, ?)', fake_data)
     

@@ -38,12 +38,19 @@ export class SensorHeatmapsPanel extends Autodesk.Viewing.UI.DockingPanel {
         if (!this.dropdown) {
             return;
         }
+        const previousValue = this.dropdown.value; // Armazena o valor selecionado anteriormente
         this.dropdown.innerHTML = '';
         for (const [channelId, channel] of dataView.getChannels().entries()) {
             const option = document.createElement('option');
             option.value = channelId;
             option.innerText = channel.name;
             this.dropdown.appendChild(option);
+        }
+        // Verifica se o previousValue ainda existe nas novas opções
+        if (Array.from(this.dropdown.options).some(option => option.value === previousValue)) {
+            this.dropdown.value = previousValue; // Define o valor selecionado anteriormente
+        } else if (this.dropdown.options.length > 0) {
+            this.dropdown.value = this.dropdown.options[0].value; // Define o primeiro valor como selecionado
         }
         this.dropdown.onchange = () => this.onDropdownChanged(dataView);
         this.onDropdownChanged(dataView);

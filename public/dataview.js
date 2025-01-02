@@ -60,8 +60,6 @@ export class MyDataView {
 
     async _loadSamples(timerange, resolution) {
         let { start, end } = timerange;
-        console.log('Chamando _loadSamples com:', { start, end, resolution }); // Log para depuração
-
     
         // Alterar para usar o POST na rota /api/sensors/aggregate
         const { timestamps, data } = await this._post('/api/sensors/aggregate', {

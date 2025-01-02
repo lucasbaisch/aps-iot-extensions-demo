@@ -16,12 +16,18 @@ export class SensorDetailExtension extends UIBaseExtension {
 
     onCurrentSensorChanged(oldSensorID, newSensorID) { this.updateCharts(); }
 
-    updateCharts() {
+    onCurrentChannelChanged(oldChannelID, newChannelID) {  this.updateCharts(); }
+
+    updateCharts(latestData = null) {
         if (this.dataView && this.currentSensorID && this.panel) {
             const sensor = this.dataView.getSensors().get(this.currentSensorID);
             if (sensor) {
                 this.panel.setTitle(sensor ? `Sensor: ${sensor.name}` : 'Sensor Details', {});
-                this.panel.updateCharts(this.currentSensorID, this.dataView);
+                if (latestData) {
+                    this.panel.updateChartsWithLatestData(this.currentSensorID, this.dataView, this.currentChannelID, latestData);
+                } else {
+                    this.panel.updateCharts(this.currentSensorID, this.dataView, this.currentChannelID);
+                }
                 this.updateCursor();
             }
         }
@@ -30,7 +36,7 @@ export class SensorDetailExtension extends UIBaseExtension {
     updateCursor() {
         if (this.dataView && this.panel && this.currentSensorID && this.currentTime) {
             const sensor = this.dataView.getSensors().get(this.currentSensorID);
-            console.log('updateCursor46546546546546465465', sensor);
+            // console.log('updateCursor46546546546546465465', sensor);
             if (sensor) {
                 this.panel.updateCursor(this.currentSensorID, this.dataView, this.currentTime);
             }

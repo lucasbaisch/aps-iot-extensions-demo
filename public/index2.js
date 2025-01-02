@@ -16,8 +16,8 @@ import {
 } from './config.js';
 // const moment = require('moment-timezone');
 
+let currentChannelID = '';
 moment.tz.setDefault('America/Sao_Paulo');
-
 
 // Inicialize o Flatpickr no campo com ID "datetime-range"
 const startPicker = flatpickr("#start-time", {
@@ -40,8 +40,6 @@ const endPicker = flatpickr("#end-time", {
     }
 });
 
-
-
 const EXTENSIONS = [
     SensorListExtensionID,
     SensorSpritesExtensionID,
@@ -53,6 +51,7 @@ const EXTENSIONS = [
 let dataView; // Declare o dataView no escopo global
 const viewer = await initViewer(document.getElementById('preview'), EXTENSIONS);
 loadModel(viewer, APS_MODEL_URN, APS_MODEL_VIEW);
+
 viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     // Initialize the timeline
     initTimeline(document.getElementById('timeline'), onTimeRangeChanged, onTimeMarkerChanged);
@@ -70,8 +69,6 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
         ext.dataView = dataView;
         ext.activate();
     }
-
-    window.extensions = extensions;
     adjustPanelStyle(viewer.getExtension(SensorListExtensionID).panel, { left: '10px', top: '480px', width: '500px', height: '150px' });
     adjustPanelStyle(viewer.getExtension(SensorDetailExtensionID).panel, { right: '10px', top: '10px', width: '500px', height: '300px' });
     adjustPanelStyle(viewer.getExtension(SensorHeatmapsExtensionID).panel, { left: '10px', top: '320px', width: '300px', height: '150px' });
@@ -111,67 +108,86 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     }
 
     function onCurrentChannelChanged(channelId) {
-        // console.log("Canal trocado no index.js", channelId);
+        // Atualize o currentChannelID diretamente nas extensões
+        console.log("TROCADO O CANAL", channelId)
         extensions.forEach(ext => ext.currentChannelID = channelId);
     }
 
-    function fetchSamples() {
+    // // Função para buscar o último valor do servidor
+    // async function fetchLatestSensorData(channelId) {
+    //     try {
+    //         const response = await fetch('/api/sensors/latest');
+    //         if (!response.ok) throw new Error('Erro ao buscar os dados do servidor.');
+    //         let latestData = await response.json();
+    //         console.log('Último valor dos sensores:', latestData);
+
+    //         const channel = dataView.getChannels().get(channelId);
+    //         if (!channel) {
+    //             throw new Error('Canal não encontrado.');
+    //         }
+
+    //         const min = channel.min;
+    //         const max = channel.max;
+    //         latestData[channelId] = (latestData[channelId] - min) / (max - min);
+
+    //         return latestData;
+    //     } catch (err) {
+    //         console.error('Erro ao buscar o valor mais recente:', err);
+    //         return null;
+    //     }
+    // }
+
+    function fetchAndUpdateSamples() {
+        console.log('Buscando e atualizando os samples...');
         try {
             // Obter os valores dos campos Flatpickr
             let start = document.getElementById('start-time').value;
             start = moment.tz(start, 'America/Sao_Paulo').format();
-    
+
             let end = document.getElementById('end-time').value;
             end = moment.tz(end, 'America/Sao_Paulo').format();
             const resolution = parseInt(document.getElementById('resolution').value, 10);
-            // console.log('Fetching samples:', { start, end, resolution });
+            console.log('Fetching samples:', { start, end, resolution });
             // Validar os campos
             if (!start || !end || isNaN(resolution) || resolution <= 0) {
                 alert('Preencha todos os campos corretamente: Start Time, End Time e Resolution.');
                 return;
             }
-    
+
+            // Converter os valores para objetos de data
             const timerange = {
                 start: new Date(start),
                 end: new Date(end),
             };
-    
+
             // Validar se a data inicial é menor que a final
             if (timerange.start >= timerange.end) {
                 alert('A data/hora inicial deve ser anterior à data/hora final.');
                 return;
             }
-            
+
             // Atualizar o dataView com os novos samples
             dataView.refresh(timerange, resolution);
-            
-            extensions.forEach((ext, index) => {
-                ext.dataView = dataView; // Vincular o novo dataView
-                if (ext.refresh) ext.refresh(); // Atualizar visualmente, se necessário
-                // Seta o canal atual para o canal que estava selecionado antes de atualizar
+
+            // Atualizar extensões conectadas ao viewer
+            extensions.forEach(ext => {
+                ext.dataView = dataView;
+                if (ext.refresh) ext.refresh();
             });
-            window.extensions = extensions;
-            // extensions.forEach(ext => {
-            //     ext.dataView = dataView; // Vincular o dataView atualizado às extensões
-            //     if (ext.refresh) ext.refresh(); // Certifique-se de que a extensão possui o método refresh
-            // });
+
+            console.log('DataView atualizado com os novos samples:', dataView.getSamples());
         } catch (error) {
-            console.error('Erro ao buscar amostras:', error);
+            console.error('Erro ao buscar e atualizar os dados:', error);
         }
     }
-    
-    document.getElementById('fetch-samples').addEventListener('click', fetchSamples);
-    
-    // Chamar a função fetchSamples a cada 5 segundos
-    setInterval(fetchSamples, 5000);
 
-
+    // Configura para buscar o último valor a cada 5 segundos (5000 ms)
+    // setInterval(() => {
+    //     fetchAndUpdateSamples();
+    // }, 10000);
 });
 
-
-
-
-
+document.getElementById('fetch-samples').addEventListener('click', fetchAndUpdateSamples());
 
 window.getBoundingBox = function (model, dbid) {
     const tree = model.getInstanceTree();
