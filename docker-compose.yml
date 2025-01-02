@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Mapeia a porta 3000 do host para o contêiner
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./sensor_data.db:/app/sensor_data.db
+    environment:
+      - APS_CLIENT_ID=${APS_CLIENT_ID}
+      - APS_CLIENT_SECRET=${APS_CLIENT_SECRET}
+      - APS_BUCKET=${APS_BUCKET}
+      - PORT=3000
