@@ -79,41 +79,58 @@ export class SensorDetailPanel extends Autodesk.Viewing.UI.DockingPanel {
     }
 
     _createChart(canvas, timestamps, values, min, max, title) {
-        // console.log("Timestamps recebidos:", timestamps)
+        // Garantir que timestamps e values são válidos
+        if (!timestamps || !Array.isArray(timestamps) || timestamps.length === 0) {
+            console.error('Timestamps inválidos:', timestamps);
+            timestamps = [];
+        }
+        if (!values || !Array.isArray(values) || values.length === 0) {
+            console.error('Values inválidos:', values);
+            values = [];
+        }
+    
+        // Certificar-se de que timestamps e values têm o mesmo comprimento
+        if (timestamps.length !== values.length) {
+            console.error('Timestamps e values têm comprimentos diferentes:', timestamps, values);
+            values = [];
+            timestamps = [];
+        }
+    
+        // Criar o gráfico
         return new Chart(canvas.getContext('2d'), {
             type: 'line',
             data: {
-                // labels: timestamps.map(timestamp => timestamp.toLocaleDateString()),
-                labels: timestamps, // Use os timestamps diretamente
+                labels: timestamps, // Usar os timestamps diretamente como strings
                 datasets: [{
                     label: title,
                     data: values,
                     radius: values.map(_ => 3),
                     fill: false,
                     borderColor: '#eee',
-                    color: '#eee',
                     tension: 0.1
                 }],
             },
             options: {
+                responsive: true,
                 scales: {
                     x: {
                         type: 'time', // Escala de tempo
                         time: {
-                            tooltipFormat: 'YYYY-MM-DD HH:mm', // Tooltip format
+                            // tooltipFormat tem que ser dia/mês/ano hora:minuto
+                            tooltipFormat: 'DD/MM/YYYY HH:mm',
                             displayFormats: {
-                                minute: 'YYYY-MM-DD HH:mm', // Formato exibido no eixo
-                                hour: 'YYYY-MM-DD HH:mm',
+                                hour: 'HH:mm', // Exibe apenas horas e minutos
+                                day: 'MMM D'   // Exibe o dia completo para ticks principais
                             }
                         },
                         title: {
                             display: true,
-                            text: 'Timestamp'
+                            text: 'DateTime'
                         }
                     },
                     y: {
-                        // min,
-                        // max,
+                        suggestedMin: min,
+                        suggestedMax: max,
                         title: {
                             display: true,
                             text: 'Sensor Value'
@@ -123,6 +140,7 @@ export class SensorDetailPanel extends Autodesk.Viewing.UI.DockingPanel {
             }
         });
     }
+    
 
     updateCursor(sensorId, dataView, currentTime) {
         const defaultChannelID = dataView.getChannels().keys().next().value;

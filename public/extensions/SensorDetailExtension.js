@@ -21,8 +21,9 @@ export class SensorDetailExtension extends UIBaseExtension {
     updateCharts(latestData = null) {
         if (this.dataView && this.currentSensorID && this.panel) {
             const sensor = this.dataView.getSensors().get(this.currentSensorID);
+            const channel = this.dataView.getChannels().get(this.currentChannelID);
             if (sensor) {
-                this.panel.setTitle(sensor ? `Sensor: ${sensor.name}` : 'Sensor Details', {});
+                this.panel.setTitle(sensor ? `Sensor: ${channel.name}` : 'Sensor Details', {});
                 if (latestData) {
                     this.panel.updateChartsWithLatestData(this.currentSensorID, this.dataView, this.currentChannelID, latestData);
                 } else {

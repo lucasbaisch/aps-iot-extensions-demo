@@ -18,11 +18,21 @@
 <body>
     <div id="header">
         <div style="margin: 10px;">
+            <label for="predefined-period">Período:</label>
+            <select id="time-range">
+                <option value="custom" selected>Custom Range</option>
+                <option value="last30min">Últimos 30 min</option>
+                <option value="last1hour">Última 1 hora</option>
+                <option value="last6hours">Últimas 6 horas</option>
+                <option value="last24hours">Últimas 24 horas</option>
+            </select>
+        </div>
+        <div id="custom-range-fields" style="margin: 10px;">
             <!-- <label for="start-time">Start Date & Time:</label> -->
             <input type="text" id="start-time" placeholder="Select start date & time" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" />
         </div>
         
-        <div style="margin: 10px;">
+        <div id="custom-range-fields" style="margin: 10px;">
             <!-- <label for="end-time">End Date & Time:</label> -->
             <input type="text" id="end-time" placeholder="Select end date & time" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" />
         </div>
@@ -39,6 +49,7 @@
             <option value="1440">24 horas</option>
         </select>
         <br />
+
 
         <button id="fetch-samples">Fetch Data</button>
     </div>

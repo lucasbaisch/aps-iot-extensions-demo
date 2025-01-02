@@ -40,7 +40,43 @@ const endPicker = flatpickr("#end-time", {
     }
 });
 
+document.getElementById('time-range').addEventListener('change', function() {
+    const customRangeFields = document.querySelectorAll('#custom-range-fields');
+    const resolutionSelect = document.getElementById('resolution');
+    const selectedValue = this.value;
 
+    if (selectedValue === 'custom') {
+        customRangeFields.forEach(field => field.style.display = 'block');
+        updateResolutionOptions([1, 5, 10, 15, 30, 60, 360, 720, 1440]);
+    } else {
+        customRangeFields.forEach(field => field.style.display = 'none');
+        switch (selectedValue) {
+            case 'last30min':
+                updateResolutionOptions([1, 5, 10, 15, 30]);
+                break;
+            case 'last1hour':
+                updateResolutionOptions([1, 5, 10, 15, 30, 60]);
+                break;
+            case 'last6hours':
+                updateResolutionOptions([1, 5, 10, 15, 30, 60, 360]);
+                break;
+            case 'last24hours':
+                updateResolutionOptions([1, 5, 10, 15, 30, 60, 360, 720, 1440]);
+                break;
+        }
+    }
+});
+
+function updateResolutionOptions(options) {
+    const resolutionSelect = document.getElementById('resolution');
+    resolutionSelect.innerHTML = '';
+    options.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option;
+        opt.textContent = option === 60 ? '1 hora' : option === 360 ? '6 horas' : option === 720 ? '12 horas' : option === 1440 ? '24 horas' : `${option} min`;
+        resolutionSelect.appendChild(opt);
+    });
+}
 
 const EXTENSIONS = [
     SensorListExtensionID,
@@ -73,7 +109,7 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
 
     window.extensions = extensions;
     adjustPanelStyle(viewer.getExtension(SensorListExtensionID).panel, { left: '10px', top: '480px', width: '500px', height: '150px' });
-    adjustPanelStyle(viewer.getExtension(SensorDetailExtensionID).panel, { right: '10px', top: '10px', width: '500px', height: '300px' });
+    adjustPanelStyle(viewer.getExtension(SensorDetailExtensionID).panel, { right: '10px', top: '10px', width: '800px', height: '500px' });
     adjustPanelStyle(viewer.getExtension(SensorHeatmapsExtensionID).panel, { left: '10px', top: '320px', width: '300px', height: '150px' });
 
     // Configure and activate the levels extension
@@ -115,17 +151,33 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
         extensions.forEach(ext => ext.currentChannelID = channelId);
     }
 
-    function fetchSamples() {
+    async function fetchSamples() {
         try {
-            // Obter os valores dos campos Flatpickr
-            let start = document.getElementById('start-time').value;
-            start = moment.tz(start, 'America/Sao_Paulo').format();
-    
-            let end = document.getElementById('end-time').value;
-            end = moment.tz(end, 'America/Sao_Paulo').format();
             const resolution = parseInt(document.getElementById('resolution').value, 10);
-            // console.log('Fetching samples:', { start, end, resolution });
-            // Validar os campos
+            const timeRange = document.getElementById('time-range').value;
+            let start, end;
+    
+            if (timeRange === 'custom') {
+                start = document.getElementById('start-time').value;
+                end = document.getElementById('end-time').value;
+            } else {
+                end = moment().tz('America/Sao_Paulo').format();
+                switch (timeRange) {
+                    case 'last30min':
+                        start = moment(end).subtract(30, 'minutes').format();
+                        break;
+                    case 'last1hour':
+                        start = moment(end).subtract(1, 'hour').format();
+                        break;
+                    case 'last6hours':
+                        start = moment(end).subtract(6, 'hours').format();
+                        break;
+                    case 'last24hours':
+                        start = moment(end).subtract(24, 'hours').format();
+                        break;
+                }
+            }
+    
             if (!start || !end || isNaN(resolution) || resolution <= 0) {
                 alert('Preencha todos os campos corretamente: Start Time, End Time e Resolution.');
                 return;
@@ -136,25 +188,17 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
                 end: new Date(end),
             };
     
-            // Validar se a data inicial é menor que a final
             if (timerange.start >= timerange.end) {
                 alert('A data/hora inicial deve ser anterior à data/hora final.');
                 return;
             }
-            
-            // Atualizar o dataView com os novos samples
-            dataView.refresh(timerange, resolution);
-            
-            extensions.forEach((ext, index) => {
-                ext.dataView = dataView; // Vincular o novo dataView
-                if (ext.refresh) ext.refresh(); // Atualizar visualmente, se necessário
-                // Seta o canal atual para o canal que estava selecionado antes de atualizar
+    
+            await dataView.refresh(timerange, resolution);
+    
+            extensions.forEach((ext) => {
+                ext.dataView = dataView;
+                if (ext.refresh) ext.refresh();
             });
-            window.extensions = extensions;
-            // extensions.forEach(ext => {
-            //     ext.dataView = dataView; // Vincular o dataView atualizado às extensões
-            //     if (ext.refresh) ext.refresh(); // Certifique-se de que a extensão possui o método refresh
-            // });
         } catch (error) {
             console.error('Erro ao buscar amostras:', error);
         }
@@ -163,7 +207,7 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     document.getElementById('fetch-samples').addEventListener('click', fetchSamples);
     
     // Chamar a função fetchSamples a cada 5 segundos
-    setInterval(fetchSamples, 5000);
+    setInterval(fetchSamples, 30000);
 
 
 });

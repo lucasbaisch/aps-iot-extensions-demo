@@ -90,3 +90,25 @@ html, body {
     transform: scale(0.95); /* Efeito de clique */
 }
 
+#time-range {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: #555;
+    color: #eee;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 200px; /* Tamanho mínimo para consistência */
+}
+
+#time-range:hover {
+    background-color: #666;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#time-range:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
