@@ -24,7 +24,8 @@ db.run(
         time TEXT PRIMARY KEY,
         temp REAL,
         umidade REAL,
-        co REAL
+        co REAL,
+        ruido REAL
     )`,
     (err) => {
         if (err) {
@@ -69,10 +70,10 @@ app.get('/iot/samples', async function (req, res, next) {
 
 // Nova rota para salvar dados no banco via POST
 app.post('/api/sensors', (req, res) => {
-    let { time, temp, umidade, co } = req.body;
+    let { time, temp, umidade, co, ruido } = req.body;
 
-    if (!time || temp === undefined || umidade === undefined || co === undefined) {
-        return res.status(400).send('Campos "time", "temp", "umidade" e "co" são obrigatórios.');
+    if (!time || temp === undefined || umidade === undefined || co === undefined || ruido === undefined) {
+        return res.status(400).send('Campos "time", "temp", "umidade", "co" e "ruido" são obrigatórios.');
     }
 
     // convert time epoch str to brazil timezone on format yyyy-MM-dd HH:mm:ss
@@ -80,8 +81,8 @@ app.post('/api/sensors', (req, res) => {
     date.setHours(date.getHours() - 3);
     time = date.toISOString();
 
-    const query = `INSERT INTO sensors (time, temp, umidade, co) VALUES (?, ?, ?, ?)`;
-    db.run(query, [time, temp, umidade, co], (err) => {
+    const query = `INSERT INTO sensors (time, temp, umidade, co, ruido) VALUES (?, ?, ?, ?, ?)`;
+    db.run(query, [time, temp, umidade, co, ruido], (err) => {
         if (err) {
             console.error('Erro ao inserir dados:', err.message);
             return res.status(500).send('Erro ao salvar os dados.');
@@ -117,7 +118,8 @@ app.post('/api/sensors/aggregate', (req, res) => {
             MIN(time) AS time,
             AVG(temp) AS temp,
             AVG(umidade) AS umidade,
-            AVG(co) AS co
+            AVG(co) AS co,
+            AVG(ruido) AS ruido
         FROM sensors
         WHERE datetime(time) >= datetime(?) AND datetime(time) <= datetime(?)
         GROUP BY CAST((strftime('%s', time) / ?) AS INTEGER)
@@ -142,10 +144,11 @@ app.post('/api/sensors/aggregate', (req, res) => {
 
         const timestamps = rows.map(row => row.time);
         const data = rows.reduce((acc, row) => {
-            acc['sensor-1'] = acc['sensor-1'] || { temp: [], umidade: [], co: [] };
+            acc['sensor-1'] = acc['sensor-1'] || { temp: [], umidade: [], co: [], ruido: [] };
             acc['sensor-1'].temp.push(row.temp);
             acc['sensor-1'].umidade.push(row.umidade);
             acc['sensor-1'].co.push(row.co);
+            acc['sensor-1'].ruido.push(row.ruido);
             return acc;
         }, {});
 

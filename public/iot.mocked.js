@@ -22,7 +22,7 @@ const CHANNELS = {
         max: 28.0
     },
     'umidade': {
-        name: 'umidade',
+        name: 'umidade',    
         description: 'Level of carbon dioxide.',
         type: 'double',
         unit: 'ppm',
@@ -36,8 +36,15 @@ const CHANNELS = {
         unit: 'ppm',
         min: 0,
         max: 1000
+    },
+    'ruido': {
+        name: 'Ruído',
+        description: 'Level of noise.',
+        type: 'double',
+        unit: 'dB',
+        min: 0,
+        max: 100
     }
-
 };
 
 export async function getSensors() {
@@ -57,6 +64,7 @@ export async function getSamples(timerange, resolution = 32) {
                 'temp': generateRandomValues(18.0, 28.0, resolution, 1.0),
                 'umidade': generateRandomValues(482.81, 640.0, resolution, 1.0),
                 'co': generateRandomValues(0, 1000, resolution, 1.0),
+                'ruido': generateRandomValues(0, 100, resolution, 1.0)
             }
         }
     };
