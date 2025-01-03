@@ -33,7 +33,7 @@ ENV NODE_ENV=production
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 
-Comando para iniciar a aplicação
+# Comando para iniciar a aplicação
 CMD ["/app/start.sh"]
 
 # CMD ['sleep', 'infinity']
