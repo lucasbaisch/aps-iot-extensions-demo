@@ -4,8 +4,9 @@ $(document).ready(function () {
     // Configura os pickers de data com valores padrão
     const defaultStartDate = new Date(new Date().setHours(0, 0, 0, 0));
     const defaultEndDate = new Date(new Date().setHours(23, 59, 59, 999));
-    flatpickr("#start-date", { enableTime: true, dateFormat: "Y-m-d H:i", time_24hr: true, defaultDate: defaultStartDate });
-    flatpickr("#end-date", { enableTime: true, dateFormat: "Y-m-d H:i", time_24hr: true, defaultDate: defaultEndDate });
+    //date format 30/01/2025 06:25:55
+    flatpickr("#start-date", { enableTime: true, dateFormat: "Y-m-d H:i:S", defaultDate: defaultStartDate });
+    flatpickr("#end-date", { enableTime: true, dateFormat: "Y-m-d H:i:S", defaultDate: defaultEndDate });
 
     // Buscar dados do back-end
     $('#fetch-data').on('click', async () => {
