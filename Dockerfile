@@ -2,7 +2,7 @@
 FROM node:16
 
 # Atualizar o sistema
-RUN apt-get update && apt-get install -y sqlite3 python3 python3-pip supervisor && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y nano sqlite3 python3 python3-pip supervisor && rm -rf /var/lib/apt/lists/*
 
 ENV TZ=America/Sao_Paulo
 
