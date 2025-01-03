@@ -212,7 +212,7 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
     document.getElementById('fetch-samples').addEventListener('click', fetchSamples);
     
     // Chamar a função fetchSamples a cada 5 segundos
-    setInterval(fetchSamples, 30000);
+    setInterval(fetchSamples, 60000);
 
 
 });
