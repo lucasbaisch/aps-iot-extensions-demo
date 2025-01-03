@@ -7,11 +7,29 @@ services:
     ports:
       - "3000:3000" # Mapeia a porta 3000 do host para o contêiner
     volumes:
-      - .:/app
-      - /app/node_modules
-      - ./sensor_data.db:/app/sensor_data.db
+      - .:/app # Sincroniza os arquivos locais com o contêiner para desenvolvimento
+      - /app/node_modules # Evita conflitos de dependências locais
     environment:
-      - APS_CLIENT_ID=${APS_CLIENT_ID}
-      - APS_CLIENT_SECRET=${APS_CLIENT_SECRET}
-      - APS_BUCKET=${APS_BUCKET}
-      - PORT=3000
+      APS_CLIENT_ID: ${APS_CLIENT_ID}
+      APS_CLIENT_SECRET: ${APS_CLIENT_SECRET}
+      APS_BUCKET: ${APS_BUCKET}
+      PORT: 3000
+      DB_HOST: mariadb
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: sensors
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: sensors
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:

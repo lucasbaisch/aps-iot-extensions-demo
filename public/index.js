@@ -156,10 +156,11 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
             const resolution = parseInt(document.getElementById('resolution').value, 10);
             const timeRange = document.getElementById('time-range').value;
             let start, end;
-    
+            
             if (timeRange === 'custom') {
                 start = document.getElementById('start-time').value;
                 end = document.getElementById('end-time').value;
+
             } else {
                 end = moment().tz('America/Sao_Paulo').format();
                 switch (timeRange) {
@@ -177,6 +178,7 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
                         break;
                 }
             }
+            
     
             if (!start || !end || isNaN(resolution) || resolution <= 0) {
                 alert('Preencha todos os campos corretamente: Start Time, End Time e Resolution.');
@@ -187,6 +189,9 @@ viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, async () => {
                 start: new Date(start),
                 end: new Date(end),
             };
+
+            console.log('start', timerange.start);  
+            console.log('end', timerange.end);
     
             if (timerange.start >= timerange.end) {
                 alert('A data/hora inicial deve ser anterior à data/hora final.');

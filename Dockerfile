@@ -1,18 +1,21 @@
-# Usar a imagem oficial do Node.js
-FROM node:16-alpine
+# Usar a imagem oficial do Node.js baseada no Ubuntu
+FROM node:16
 
-# Instalar dependências adicionais necessárias para SQLite
-RUN apk add --no-cache sqlite
+# Atualizar o sistema
+RUN apt-get update && apt-get install -y sqlite3 && rm -rf /var/lib/apt/lists/*
 
+ENV TZ=America/Sao_Paulo
 # Configurar o diretório de trabalho
 WORKDIR /app
 
-# Copiar os arquivos do projeto para o contêiner
+# Copiar apenas os arquivos de dependências
 COPY package*.json ./
-COPY . .
 
 # Instalar as dependências do Node.js
-RUN npm install
+RUN npm install mysql2 moment-timezone
+
+# Copiar o restante dos arquivos do projeto
+COPY . .
 
 # Expor a porta do servidor
 EXPOSE 3000

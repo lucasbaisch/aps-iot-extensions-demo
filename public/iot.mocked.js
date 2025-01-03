@@ -47,15 +47,18 @@ const CHANNELS = {
     }
 };
 
-export async function getSensors() {
+// Função para retornar os sensores
+async function getSensors() {
     return SENSORS;
 }
 
-export async function getChannels() {
+// Função para retornar os canais
+async function getChannels() {
     return CHANNELS;
 }
 
-export async function getSamples(timerange, resolution = 32) {
+// Função para retornar amostras simuladas
+async function getSamples(timerange, resolution = 32) {
     return {
         count: resolution,
         timestamps: generateTimestamps(timerange.start, timerange.end, resolution),
@@ -70,6 +73,7 @@ export async function getSamples(timerange, resolution = 32) {
     };
 }
 
+// Função auxiliar para gerar timestamps
 function generateTimestamps(start, end, count) {
     const delta = Math.floor((end.getTime() - start.getTime()) / (count - 1));
     const timestamps = [];
@@ -79,6 +83,7 @@ function generateTimestamps(start, end, count) {
     return timestamps;
 }
 
+// Função auxiliar para gerar valores aleatórios
 function generateRandomValues(min, max, count, maxDelta) {
     const values = [];
     let lastValue = min + Math.random() * (max - min);
@@ -94,3 +99,10 @@ function generateRandomValues(min, max, count, maxDelta) {
     }
     return values;
 }
+
+// Exportando as funções usando CommonJS
+module.exports = {
+    getSensors,
+    getChannels,
+    getSamples,
+};

@@ -1,38 +1,51 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const sqlite3 = require('sqlite3').verbose();
+const mysql = require('mysql2/promise'); // Substituindo SQLite pelo MariaDB
 const { getPublicToken } = require('./services/aps.js');
 const { getSensors, getChannels, getSamples } = require('./public/iot.mocked.js');
-const { PORT } = require('./config.js');
+const { PORT } = process.env;
+const moment = require('moment-timezone');
 
 let app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json()); // Para parsear JSON nos requests
 
 // Configuração do banco de dados
-const db = new sqlite3.Database('./sensor_data.db', (err) => {
-    if (err) {
+let db;
+(async () => {
+    try {
+        db = await mysql.createPool({
+            host: process.env.DB_HOST || '127.0.0.1',
+            user: process.env.DB_USER || 'root',
+            password: process.env.DB_PASSWORD || 'password',
+            database: process.env.DB_NAME || 'sensors',
+            waitForConnections: true,
+            connectionLimit: 10,
+            queueLimit: 0
+        });
+        console.log('Conectado ao banco de dados MariaDB.');
+    } catch (err) {
         console.error('Erro ao conectar ao banco de dados:', err.message);
-    } else {
-        console.log('Conectado ao banco de dados SQLite.');
     }
-});
+})();
 
 // Criação da tabela no banco de dados
-db.run(
-    `CREATE TABLE IF NOT EXISTS sensors (
-        time TEXT PRIMARY KEY,
-        temp REAL,
-        umidade REAL,
-        co REAL,
-        ruido REAL
-    )`,
-    (err) => {
-        if (err) {
-            console.error('Erro ao criar a tabela:', err.message);
-        }
+(async () => {
+    try {
+        await db.execute(`
+            CREATE TABLE IF NOT EXISTS sensors (
+                time DATETIME PRIMARY KEY,
+                temp DOUBLE,
+                umidade DOUBLE,
+                co DOUBLE,
+                ruido DOUBLE
+            )
+        `);
+        console.log('Tabela sensors verificada/criada.');
+    } catch (err) {
+        console.error('Erro ao criar a tabela:', err.message);
     }
-);
+})();
 
 // Rotas existentes
 app.get('/auth/token', async function (req, res, next) {
@@ -68,77 +81,73 @@ app.get('/iot/samples', async function (req, res, next) {
 });
 
 // Nova rota para salvar dados no banco via POST
-app.post('/api/sensors', (req, res) => {
+app.post('/api/sensors', async (req, res) => {
     let { time, temp, umidade, co, ruido } = req.body;
 
     if (!time || temp === undefined || umidade === undefined || co === undefined || ruido === undefined) {
         return res.status(400).send('Campos "time", "temp", "umidade", "co" e "ruido" são obrigatórios.');
     }
 
-    // convert time epoch str to brazil timezone on format yyyy-MM-dd HH:mm:ss
-    let date = new Date(parseInt(time) * 1000);
-    date.setHours(date.getHours() - 3);
-    time = date.toISOString();
+    try {
+        // Converter o timestamp para o formato DATETIME
+        const date = new Date(parseInt(time) * 1000);
+        date.setHours(date.getHours() - 3);
+        time = date.toISOString().slice(0, 19).replace('T', ' ');
 
-    const query = `INSERT INTO sensors (time, temp, umidade, co, ruido) VALUES (?, ?, ?, ?, ?)`;
-    db.run(query, [time, temp, umidade, co, ruido], (err) => {
-        if (err) {
-            console.error('Erro ao inserir dados:', err.message);
-            return res.status(500).send('Erro ao salvar os dados.');
-        }
+        await db.execute(
+            `INSERT INTO sensors (time, temp, umidade, co, ruido) VALUES (?, ?, ?, ?, ?)`,
+            [time, temp, umidade, co, ruido]
+        );
         res.status(201).send('Dados salvos com sucesso.');
-    });
+    } catch (err) {
+        console.error('Erro ao inserir dados:', err.message);
+        res.status(500).send('Erro ao salvar os dados.');
+    }
 });
 
 // Nova rota para buscar o último valor do banco
-app.get('/api/sensors/latest', (req, res) => {
-    const query = `SELECT * FROM sensors ORDER BY time DESC LIMIT 1`;
-    db.get(query, [], (err, row) => {
-        if (err) {
-            console.error('Erro ao buscar o último valor:', err.message);
-            return res.status(500).send('Erro ao buscar os dados.');
-        }
-        res.status(200).json(row || {});
-    });
+app.get('/api/sensors/latest', async (req, res) => {
+    try {
+        const [rows] = await db.query(`SELECT * FROM sensors ORDER BY time DESC LIMIT 1`);
+        res.status(200).json(rows[0] || {});
+    } catch (err) {
+        console.error('Erro ao buscar o último valor:', err.message);
+        res.status(500).send('Erro ao buscar os dados.');
+    }
 });
 
-// Nova rota para buscar dados agregados com base no intervalo de tempo e resolução
-app.post('/api/sensors/aggregate', (req, res) => {
+// Rota para buscar dados agregados com base no intervalo de tempo e resolução
+app.post('/api/sensors/aggregate', async (req, res) => {
     let { start, end, resolution } = req.body;
 
     if (!start || !end || !resolution) {
         return res.status(400).send('Parâmetros "start", "end" e "resolution" são obrigatórios.');
     }
 
-    const resolutionMs = resolution * 60 * 1000;
+    try {
+        // Converte os horários recebidos para o fuso horário do Brasil
+        const startBrazil = moment.tz(start, 'America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss');
+        const endBrazil = moment.tz(end, 'America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss');
 
-    const query = `
-        SELECT
-            MIN(time) AS time,
-            AVG(temp) AS temp,
-            AVG(umidade) AS umidade,
-            AVG(co) AS co,
-            AVG(ruido) AS ruido
-        FROM sensors
-        WHERE datetime(time) >= datetime(?) AND datetime(time) <= datetime(?)
-        GROUP BY CAST((strftime('%s', time) / ?) AS INTEGER)
-        ORDER BY time ASC
-    `;
+        const resolutionSeconds = resolution * 60;
 
-    // convert start and end to america sao paulo timezone, substrac 3 hours
-    start = new Date(start);
-    start.setHours(start.getHours() - 3);
-    start = start.toISOString();
-    end = new Date(end);
-    end.setHours(end.getHours() - 3);
-    end = end.toISOString();
+        // Query compatível com MariaDB
+        const query = `
+            SELECT 
+                MIN(time) AS time,
+                AVG(temp) AS temp,
+                AVG(umidade) AS umidade,
+                AVG(co) AS co,
+                AVG(ruido) AS ruido
+            FROM sensors
+            WHERE time >= ? AND time <= ?
+            GROUP BY FLOOR(UNIX_TIMESTAMP(time) / ?)
+            ORDER BY time ASC
+        `;
 
-    db.all(query, [start, end, resolutionMs / 1000], (err, rows) => {
-        if (err) {
-            console.error('Erro ao consultar o banco:', err.message);
-            return res.status(500).send('Erro ao consultar o banco.');
-        }
+        const [rows] = await db.query(query, [startBrazil, endBrazil, resolutionSeconds]);
 
+        // Formatar os resultados para o cliente
         const timestamps = rows.map(row => row.time);
         const data = rows.reduce((acc, row) => {
             acc['sensor-1'] = acc['sensor-1'] || { temp: [], umidade: [], co: [], ruido: [] };
@@ -150,7 +159,10 @@ app.post('/api/sensors/aggregate', (req, res) => {
         }, {});
 
         res.json({ timestamps, data });
-    });
+    } catch (err) {
+        console.error('Erro ao consultar o banco:', err.message);
+        res.status(500).send('Erro ao consultar o banco.');
+    }
 });
 
 // Tratamento de erros
