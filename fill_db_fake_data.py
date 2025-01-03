@@ -113,7 +113,7 @@ if __name__ == "__main__":
     start = datetime(2025, 1, 1, 0, 0, 0)
     end = datetime(2025, 1, 1, 0, 1, 0)
     resolution = timedelta(seconds=30)
-    just_create = False  # Se True, apenas a tabela será criada, sem inserir dados falsos
+    just_create = True  # Se True, apenas a tabela será criada, sem inserir dados falsos
     loop_inserting = False  # Se True, os dados serão inseridos em loop
 
     fill_db_with_fake_data(host, user, password, database, start, end, resolution, just_create)
