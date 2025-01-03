@@ -5,10 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Mapeia a porta 3000 do host para o contêiner
+      - "3000:3000"
     volumes:
-      - .:/app # Sincroniza os arquivos locais com o contêiner para desenvolvimento
-      - /app/node_modules # Evita conflitos de dependências locais
+      - .:/app
+      - /app/node_modules
     environment:
       APS_CLIENT_ID: ${APS_CLIENT_ID}
       APS_CLIENT_SECRET: ${APS_CLIENT_SECRET}

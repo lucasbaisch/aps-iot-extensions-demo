@@ -2,7 +2,7 @@
 FROM node:16
 
 # Atualizar o sistema
-RUN apt-get update && apt-get install -y sqlite3 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y sqlite3 python3 python3-pip supervisor && rm -rf /var/lib/apt/lists/*
 
 ENV TZ=America/Sao_Paulo
 
@@ -15,13 +15,15 @@ COPY package*.json ./
 # Instalar as dependências do Node.js
 RUN npm install mysql2 moment-timezone
 
-# Install python req
+# Instalar dependências do Python
 COPY python-requirements.txt .
-RUN apt-get update && apt-get install -y python3 python3-pip
 RUN pip3 install -r python-requirements.txt
 
 # Copiar o restante dos arquivos do projeto
 COPY . .
+
+# Instalar o arquivo de configuração do Supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Expor a porta do servidor
 EXPOSE 3000
@@ -29,11 +31,5 @@ EXPOSE 3000
 # Configurar a variável de ambiente para produção
 ENV NODE_ENV=production
 
-# Adicionar o script de inicialização
-COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
-
-# Comando para iniciar a aplicação
-CMD ["/app/start.sh"]
-
-# CMD ['sleep', 'infinity']
+# Manter o container em execução
+CMD ["supervisord", "-n"]
