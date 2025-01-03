@@ -14,7 +14,7 @@ def generate_fake_data(start, end, resolution):
         yield (current_time.strftime('%Y-%m-%d %H:%M:%S'), temp, umidade, co, ruido)
         current_time += resolution
 
-def fill_db_with_fake_data(host, user, password, database, start, end, resolution):
+def fill_db_with_fake_data(host, user, password, database, start, end, resolution, just_create=False):
     try:
         conn = mysql.connector.connect(
             host=host,
@@ -39,6 +39,11 @@ def fill_db_with_fake_data(host, user, password, database, start, end, resolutio
 
             # Apaga todos os dados existentes na tabela
             cursor.execute('DELETE FROM sensors')
+            
+            if just_create:
+                print('Somente criando a tabela.')
+                conn.commit()
+                return
 
             # Gerar dados falsos
             fake_data = generate_fake_data(start, end, resolution)
@@ -98,11 +103,13 @@ if __name__ == "__main__":
     password = "password"  # Senha configurada no `docker-compose.yml`
     database = "sensors"  # Banco de dados configurado no `docker-compose.yml`
 
-    start = datetime(2024, 11, 1, 0, 0, 0)
-    end = datetime.now()
-    resolution = timedelta(minutes=1)
+    start = datetime(2000, 11, 1, 0, 0, 0)
+    end = datetime(2000, 12, 1, 0, 0, 0)
+    resolution = timedelta(seconds=30)
+    just_create = True  # Se True, apenas a tabela será criada, sem inserir dados falsos
+    loop_inserting = False  # Se True, os dados serão inseridos em loop
 
-    fill_db_with_fake_data(host, user, password, database, start, end, resolution)
-    print('Dados falsos inseridos com sucesso.')
-
-    insert_data_in_loop(host, user, password, database, resolution)
+    fill_db_with_fake_data(host, user, password, database, start, end, resolution, just_create)
+    
+    if loop_inserting:
+        insert_data_in_loop(host, user, password, database, resolution)

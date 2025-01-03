@@ -14,6 +14,11 @@ COPY package*.json ./
 # Instalar as dependências do Node.js
 RUN npm install mysql2 moment-timezone
 
+# Install python req
+COPY python-requirements.txt .
+RUN apt-get update && apt-get install -y python3 python3-pip
+RUN pip3 install -r python-requirements.txt
+
 # Copiar o restante dos arquivos do projeto
 COPY . .
 
