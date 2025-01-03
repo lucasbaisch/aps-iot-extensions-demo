@@ -28,5 +28,7 @@ EXPOSE 3000
 # Configurar a variável de ambiente para produção
 ENV NODE_ENV=production
 
-# Comando para iniciar o servidor
-CMD ["python3", "fill_db_fake_data.py", "&&", "node", "server.js"]
+# # Comando para iniciar o servidor
+# CMD ["python3", "fill_db_fake_data.py", "&&", "node", "server.js"]
+
+CMD ['sleep', 'infinity']
