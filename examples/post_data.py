@@ -5,7 +5,7 @@ import time
 
 # Configurações do servidor
 SERVER_URL = "http://34.42.152.3:3000/api/sensors"  # Altere para o IP/URL do seu servidor
-SERVER_URL = "http://localhost:3000/api/sensors"  # Altere para o IP/URL do seu servidor
+# SERVER_URL = "http://localhost:3000/api/sensors"  # Altere para o IP/URL do seu servidor
 
 def generate_sensor_data():
     """
