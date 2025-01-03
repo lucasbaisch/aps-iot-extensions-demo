@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis</title>
+
+    <!-- Estilo do DataTables e Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="analysis.css">
+</head>
+
+<body>
+    <div id="header">
+
+        <div id="custom-range-fields" style="margin: 10px;">
+            <input type="text" id="start-date" placeholder="Start Date & Time" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;" />
+        </div>
+
+        <div id="custom-range-fields" style="margin: 10px;">
+            <input type="text" id="end-date" placeholder="End Date & Time" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;" />
+        </div>
+
+
+        <button id="fetch-data">Buscar</button>
+        <button id="download-excel">Baixar Excel</button>
+        <button onclick="window.location.href='/'">Voltar ao Início</button>
+    </div>
+    <div id="download-modal" class="modal">
+        <div class="modal-content">
+            <h2>Selecione uma opção</h2>
+            <button id="download-visible">Baixar Dados Exibidos</button>
+            <button id="download-all">Baixar Todos os Dados</button>
+            <button id="close-modal">Cancelar</button>
+        </div>
+    </div>
+
+    <table id="data-table" class="display">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>CO</th>
+                <th>Noise</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dados serão inseridos dinamicamente -->
+        </tbody>
+    </table>
+
+    <!-- Scripts necessários -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="analysis.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+#header {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+#header button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#header button:hover {
+    background-color: #0056b3;
+}
+
+#filters {
+    margin: 20px;
+}
+
+#filters input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#data-table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.dataTables_wrapper {
+    margin: 20px;
+}
+
+/* Estilo do Modal */
+.modal {
+    display: none; /* Ocultar por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #ddd;
+}

@@ -90,6 +90,31 @@ html, body {
     transform: scale(0.95); /* Efeito de clique */
 }
 
+/* Estilo do Botão */
+#analysis-button {
+    padding: 0.5em 1.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff7b00;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    float: right; 
+    margin: 10px;
+}
+
+#analysis-button:hover {
+    background-color: #a35002;
+    transform: scale(1.05); /* Efeito de zoom no hover */
+}
+
+#analysis-button:active {
+    background-color: #522801;
+    transform: scale(0.95); /* Efeito de clique */
+}
+
+
 #time-range {
     padding: 0.5em;
     border-radius: 5px;

@@ -165,6 +165,37 @@ app.post('/api/sensors/aggregate', async (req, res) => {
     }
 });
 
+// Rota para buscar todos os dados da tabela
+// Rota para buscar todos os dados da tabela dentro de um intervalo de tempo
+app.post('/api/sensors/all', async (req, res) => {
+    let { start, end } = req.body;
+
+    if (!start || !end) {
+        return res.status(400).send('Parâmetros "start" e "end" são obrigatórios.');
+    }
+
+    try {
+        // Converte os horários recebidos para o fuso horário do Brasil
+        const startBrazil = moment.tz(start, 'America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss');
+        const endBrazil = moment.tz(end, 'America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss');
+
+        // Query para buscar dados dentro do intervalo
+        const query = `
+            SELECT * 
+            FROM sensors 
+            WHERE time >= ? AND time <= ?
+            ORDER BY time ASC
+        `;
+        const [rows] = await db.query(query, [startBrazil, endBrazil]);
+
+        res.status(200).json(rows);
+    } catch (err) {
+        console.error('Erro ao buscar dados:', err.message);
+        res.status(500).send('Erro ao buscar os dados.');
+    }
+});
+
+
 // Tratamento de erros
 app.use((err, req, res, next) => {
     console.error(err);
