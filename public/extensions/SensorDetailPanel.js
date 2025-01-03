@@ -129,8 +129,8 @@ export class SensorDetailPanel extends Autodesk.Viewing.UI.DockingPanel {
                         }
                     },
                     y: {
-                        suggestedMin: min,
-                        suggestedMax: max,
+                        // suggestedMin: min,
+                        // suggestedMax: max,
                         title: {
                             display: true,
                             text: 'Sensor Value'
