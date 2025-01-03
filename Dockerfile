@@ -23,7 +23,7 @@ RUN pip3 install -r python-requirements.txt
 COPY . .
 
 # Criar pasta /app/logs/
-RUN mkdir logs
+RUN mkdir /app/logs
 
 # Instalar o arquivo de configuração do Supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
