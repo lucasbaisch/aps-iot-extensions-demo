@@ -5,6 +5,7 @@ FROM node:16
 RUN apt-get update && apt-get install -y sqlite3 && rm -rf /var/lib/apt/lists/*
 
 ENV TZ=America/Sao_Paulo
+
 # Configurar o diretório de trabalho
 WORKDIR /app
 
@@ -28,7 +29,11 @@ EXPOSE 3000
 # Configurar a variável de ambiente para produção
 ENV NODE_ENV=production
 
-# # Comando para iniciar o servidor
-# CMD ["python3", "fill_db_fake_data.py", "&&", "node", "server.js"]
+# Adicionar o script de inicialização
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
+Comando para iniciar a aplicação
+# CMD ["/app/start.sh"]
 
 CMD ['sleep', 'infinity']
