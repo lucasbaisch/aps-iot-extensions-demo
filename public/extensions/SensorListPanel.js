@@ -39,7 +39,7 @@ export class SensorListPanel extends Autodesk.Viewing.UI.PropertyPanel {
             }
         });
     }
-
+    
     update(dataView, timestamp, updateColumns) {
         var _a, _b;
         if (updateColumns) {
@@ -62,8 +62,11 @@ export class SensorListPanel extends Autodesk.Viewing.UI.PropertyPanel {
             for (const [channelId, channel] of dataView.getChannels().entries()) {
                 const samples = dataView.getSamples(sensorId, channelId);
                 if (samples) {
-                    const closestIndex = findNearestTimestampIndex(samples.timestamps, timestamp); // TODO: reuse this code from BaseExtension
-                    row[channelId] = `${samples.values[closestIndex].toFixed(2)} ${channel.unit}`;
+                    const closestIndex = findNearestTimestampIndex(samples.timestamps, timestamp);
+                    const value = samples.values[closestIndex];
+                    row[channelId] = value != null 
+                        ? `${value.toFixed(2)} ${channel.unit}` 
+                        : "N/A"; // Valor padrão caso seja null ou undefined
                 }
             }
             rows.push(row);
