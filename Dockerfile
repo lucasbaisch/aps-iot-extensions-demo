@@ -29,4 +29,4 @@ EXPOSE 3000
 ENV NODE_ENV=production
 
 # Comando para iniciar o servidor
-CMD ["node", "server.js"]
+CMD ["python3", "fill_db_fake_data.py", "&&", "node", "server.js"]
