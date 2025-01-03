@@ -15,6 +15,7 @@ def generate_fake_data(start, end, resolution):
         current_time += resolution
 
 def fill_db_with_fake_data(host, user, password, database, start, end, resolution, just_create=False):
+    connected = False
     try:
         conn = mysql.connector.connect(
             host=host,
@@ -23,6 +24,7 @@ def fill_db_with_fake_data(host, user, password, database, start, end, resolutio
             database=database
         )
         if conn.is_connected():
+            connected = True
             print('Conectado ao banco de dados MariaDB.')
             cursor = conn.cursor()
 
@@ -58,7 +60,7 @@ def fill_db_with_fake_data(host, user, password, database, start, end, resolutio
     except Error as e:
         print(f'Erro ao conectar ao MariaDB: {e}')
     finally:
-        if conn.is_connected():
+        if connected:
             cursor.close()
             conn.close()
 
