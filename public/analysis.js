@@ -5,8 +5,8 @@ $(document).ready(function () {
     const defaultStartDate = new Date(new Date().setHours(0, 0, 0, 0));
     const defaultEndDate = new Date(new Date().setHours(23, 59, 59, 999));
     //date format 30/01/2025 06:25:55
-    flatpickr("#start-date", { enableTime: true, dateFormat: "Y-m-d H:i:S", defaultDate: defaultStartDate });
-    flatpickr("#end-date", { enableTime: true, dateFormat: "Y-m-d H:i:S", defaultDate: defaultEndDate });
+    flatpickr("#start-date", { enableTime: true, dateFormat: "Y-m-d H:i", defaultDate: defaultStartDate });
+    flatpickr("#end-date", { enableTime: true, dateFormat: "Y-m-d H:i", defaultDate: defaultEndDate });
 
     // Buscar dados do back-end
     $('#fetch-data').on('click', async () => {
@@ -133,6 +133,7 @@ $(document).ready(function () {
         const year = date.getFullYear();
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
-        return `${day}/${month}/${year} ${hours}:${minutes}`;
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
     }
 });
