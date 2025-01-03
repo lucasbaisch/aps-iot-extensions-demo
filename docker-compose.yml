@@ -18,6 +18,8 @@ services:
       DB_USER: root
       DB_PASSWORD: password
       DB_NAME: sensors
+    depends_on:
+      - mariadb
 
   mariadb:
     image: mariadb:latest

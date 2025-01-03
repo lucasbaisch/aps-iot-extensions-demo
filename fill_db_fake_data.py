@@ -1,8 +1,13 @@
+import os
 import mysql.connector
 from mysql.connector import Error
 from datetime import datetime, timedelta
 import random
 import time
+from dotenv import load_dotenv
+
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv()
 
 def generate_fake_data(start, end, resolution):
     current_time = start
@@ -100,10 +105,10 @@ def insert_data_in_loop(host, user, password, database, resolution):
             conn.close()
 
 if __name__ == "__main__":
-    host = "127.0.0.1"  # Endereço do MariaDB (ajuste para "mariadb" se estiver no mesmo docker compose)
-    user = "root"  # Usuário configurado no `docker-compose.yml`
-    password = "password"  # Senha configurada no `docker-compose.yml`
-    database = "sensors"  # Banco de dados configurado no `docker-compose.yml`
+    host = os.getenv("DB_HOST", "127.0.0.1")
+    user = os.getenv("DB_USER", "root")
+    password = os.getenv("DB_PASSWORD", "password")
+    database = os.getenv("DB_NAME", "sensors")
 
     start = datetime(2000, 11, 1, 0, 0, 0)
     end = datetime(2000, 12, 1, 0, 0, 0)
