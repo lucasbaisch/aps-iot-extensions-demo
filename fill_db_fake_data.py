@@ -110,8 +110,8 @@ if __name__ == "__main__":
     password = os.getenv("DB_PASSWORD", "password")
     database = os.getenv("DB_NAME", "sensors")
 
-    start = datetime(2024, 11, 1, 0, 0, 0)
-    end = datetime.now() - timedelta(days=1)  # 30 dias atrás
+    start = datetime.now()
+    end = datetime.now() - timedelta(days=7)  # 30 dias atrás
     resolution = timedelta(seconds=60)
     just_create = False  # Se True, apenas a tabela será criada, sem inserir dados falsos
     loop_inserting = False  # Se True, os dados serão inseridos em loop
