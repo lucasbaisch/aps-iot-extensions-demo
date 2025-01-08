@@ -90,8 +90,18 @@ def save_manifest(manifest_data, filename="manifest.json"):
 
 def save_env_file(data, filename=".env"):
     with open(filename, "w") as env_file:
+        # Escreve as variáveis dinâmicas fornecidas em `data`
         for key, value in data.items():
             env_file.write(f"{key}={value}\n")
+        
+        # Adiciona as variáveis fixas
+        env_file.write("\n")
+        env_file.write("PORT=3000\n\n")
+        env_file.write("DB_HOST=mariadb\n")
+        env_file.write("DB_USER=root\n")
+        env_file.write("DB_PASSWORD=password\n")
+        env_file.write("DB_NAME=sensors\n")
+    
     print(f"Configurações salvas em: {filename}")
 
 def extract_master_view(manifest_data):
