@@ -63,9 +63,9 @@ def post_sensor_data(data):
 if __name__ == "__main__":
     # Envia dados de um mÊS atrás até agora com resolução de 1 minuto
     # start_time = 01/01/2024
-    # end_time = 01/02/2024
+    # end_time = 03/01/2024
     start_time = datetime(2024, 1, 1).timestamp()
-    end_time = datetime(2024, 2, 1).timestamp()
+    end_time = datetime(2024, 3, 1).timestamp()
     past_sensor_data_list = generate_past_sensor_data(start_time, end_time)
     
     for past_sensor_data in past_sensor_data_list[::-1]:  # Envia os dados do mais antigo para o mais recente
