@@ -165,7 +165,8 @@ if __name__ == "__main__":
         print("Configuração inicial")
         CLIENT_ID = input("Digite o CLIENT_ID: ")
         CLIENT_SECRET = input("Digite o CLIENT_SECRET: ")
-        FILE_PATH = input("Digite o caminho do arquivo (sala_de_descanso.rvt): ")
+        FILE_PATH = None
+        # FILE_PATH = input("Digite o caminho do arquivo (sala_de_descanso.rvt): ")
         if not FILE_PATH:
             FILE_PATH = "sala_de_descanso.rvt"
         OBJECT_NAME = os.path.basename(FILE_PATH)
