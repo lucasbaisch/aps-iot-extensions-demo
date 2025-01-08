@@ -195,7 +195,9 @@ if __name__ == "__main__":
                 if external_ip:
                     print('========================================================================')
                     print('========================================================================')
-                    print(f"Para acessar a aplicação, utilize o endereco: http://{external_ip}:3000")
+                    print("Agora rode o comando: 'docker-compose up -d --build'")
+                    print("E então acesse a aplicação com o endereco:")
+                    print(f"http://{external_ip}:3000")
                 break
             time.sleep(3)
 
