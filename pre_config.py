@@ -70,7 +70,7 @@ def start_translation_job(access_token, urn):
     headers = {"Authorization": f"Bearer {access_token}", "Content-Type": "application/json"}
     payload = {
         "input": {"urn": urn},
-        "output": {"formats": [{"type": "svf2", "views": ["2d", "3d"]}]}
+        "output": {"formats": [{"type": "svf2", "views": ["2d", "3d"], "advanced": {"generateMasterViews": True}}]}
     }
     response = requests.post(url, headers=headers, json=payload)
     response.raise_for_status()
