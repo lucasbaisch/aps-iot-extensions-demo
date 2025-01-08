@@ -137,6 +137,27 @@ def get_external_ip():
         print(f"Erro ao obter o IP externo: {e}")
         return None
 
+def check_manifest_status(access_token, urn, domain):
+    """
+    Faz uma requisição GET ao endpoint do manifesto para verificar o status.
+    """
+    url = f"https://cdn.derivative.autodesk.com/derivativeservice/v2/manifest/{urn}?domain={domain}"
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Accept": "*/*",
+        "User-Agent": "Python-Requests"
+    }
+
+    try:
+        response = requests.get(url, headers=headers)
+        print(f"Manifest status: {response.status_code}")
+        if response.status_code == 200:
+            print("Manifest acessado com sucesso!")
+        else:
+            print(f"Erro ao acessar o manifesto. Status: {response.status_code}")
+            print(f"Detalhes: {response.text}")
+    except requests.RequestException as e:
+        print(f"Erro na requisição do manifesto: {e}")
 
 # === EXECUÇÃO ===
 if __name__ == "__main__":
@@ -144,7 +165,9 @@ if __name__ == "__main__":
         print("Configuração inicial")
         CLIENT_ID = input("Digite o CLIENT_ID: ")
         CLIENT_SECRET = input("Digite o CLIENT_SECRET: ")
-        FILE_PATH = input("Digite o caminho do arquivo (FILE_PATH): ")
+        FILE_PATH = input("Digite o caminho do arquivo (sala_de_descanso.rvt): ")
+        if not FILE_PATH:
+            FILE_PATH = "sala_de_descanso.rvt"
         OBJECT_NAME = os.path.basename(FILE_PATH)
         BUCKET_KEY = generate_bucket_key()
 
@@ -180,6 +203,7 @@ if __name__ == "__main__":
             status = manifest.get("status", "unknown")
             print(f"Status: {status}, progresso: {manifest.get('progress', '0%')}")
             if status in ["success", "failed"]:
+                success = check_manifest_status(access_token, urn, get_external_ip())
                 save_manifest(manifest)
                 master_view = extract_master_view(manifest)
                 if master_view:
@@ -194,7 +218,7 @@ if __name__ == "__main__":
                 if external_ip:
                     print('========================================================================')
                     print('========================================================================')
-                    print("Agora rode o comando: 'docker-compose up -d --build'")
+                    print("Agora rode o comando: 'docker compose up -d --build'")
                     print("E então acesse a aplicação com o endereco:")
                     print(f"http://{external_ip}:3000")
                 break
@@ -202,3 +226,5 @@ if __name__ == "__main__":
 
     except Exception as e:
         print(f"Erro: {str(e)}")
+
+"https://cdn.derivative.autodesk.com/derivativeservice/v2/manifest/dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA?domain=http%3A%2F%2F34.67.0.151%3A3000"
