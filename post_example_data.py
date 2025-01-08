@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import time
 
 # Configurações do servidor
-SERVER_URL = "http://34.42.152.3:3000/api/sensors"  # Altere para o IP/URL do seu servidor
+SERVER_URL = "http://34.59.64.61:3000/api/sensors"  # Altere para o IP/URL do seu servidor
 # SERVER_URL = "http://localhost:3000/api/sensors"  # Altere para o IP/URL do seu servidor
 
 def generate_sensor_data():
@@ -62,8 +62,10 @@ def post_sensor_data(data):
 
 if __name__ == "__main__":
     # Envia dados de um mÊS atrás até agora com resolução de 1 minuto
-    start_time = int((datetime.now() - timedelta(days=30)).timestamp())
-    end_time = int(datetime.now().timestamp())
+    # start_time = 01/01/2024
+    # end_time = 01/02/2024
+    start_time = datetime(2024, 1, 1).timestamp()
+    end_time = datetime(2024, 2, 1).timestamp()
     past_sensor_data_list = generate_past_sensor_data(start_time, end_time)
     
     for past_sensor_data in past_sensor_data_list[::-1]:  # Envia os dados do mais antigo para o mais recente
