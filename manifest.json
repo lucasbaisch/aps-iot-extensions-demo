@@ -1,0 +1,2171 @@
+{
+    "type": "manifest",
+    "hasThumbnail": "true",
+    "status": "success",
+    "progress": "complete",
+    "region": "US",
+    "urn": "dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA",
+    "version": "1.0",
+    "derivatives": [
+        {
+            "name": "sala_de_descanso.rvt",
+            "hasThumbnail": "true",
+            "status": "success",
+            "progress": "complete",
+            "properties": {
+                "Document Information": {
+                    "RVTVersion": "2025",
+                    "Nome do projeto": "Nome do projeto",
+                    "N\u00famero do projeto": "0001",
+                    "Autor": "",
+                    "Endere\u00e7o do projeto": "Insira aqui o endere\u00e7o",
+                    "Data de emiss\u00e3o do projeto": "Data de emiss\u00e3o",
+                    "Status do projeto": "Status do projeto",
+                    "Nome da constru\u00e7\u00e3o": "",
+                    "Nome do cliente": "Propriet\u00e1rio",
+                    "Nome da organiza\u00e7\u00e3o": "",
+                    "Descri\u00e7\u00e3o da organiza\u00e7\u00e3o": ""
+                },
+                "selfDocumentIdentity": {
+                    "documentId": "d5a6d953-f1ef-4654-a6d3-c9fae8d82bdd",
+                    "instanceId": "44ea24cf-198c-4157-8944-e6cd85e45b4d",
+                    "revitNumberOfSaves": 317
+                }
+            },
+            "extractorVersion": "2026.7.2.1971",
+            "outputType": "svf2",
+            "children": [
+                {
+                    "guid": "6fac95cb-af5d-3e4f-b943-8a7f55847ff1",
+                    "type": "resource",
+                    "role": "Autodesk.CloudPlatform.PropertyDatabase",
+                    "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/model.sdb",
+                    "mime": "application/autodesk-db",
+                    "status": "success"
+                },
+                {
+                    "guid": "a4aac952-a3f4-031c-4113-b2d9ac2d0de6",
+                    "type": "resource",
+                    "role": "Autodesk.AEC.ModelData",
+                    "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/AECModelData.json",
+                    "mime": "application/json",
+                    "status": "success"
+                },
+                {
+                    "guid": "94936c24-5e86-5cdc-af1e-dbec57d85b54",
+                    "type": "geometry",
+                    "role": "3d",
+                    "name": "{3D}",
+                    "viewableID": "0f7af224-8966-4a18-a6b9-66a40f45e534-00054a1b",
+                    "phaseNames": "Constru\u00e7\u00e3o nova",
+                    "phaseIds": "c8c9591b-fcaf-44ac-94c8-6e357de0a0cf-000153b1",
+                    "status": "success",
+                    "hasThumbnail": "true",
+                    "progress": "complete",
+                    "children": [
+                        {
+                            "guid": "0f7af224-8966-4a18-a6b9-66a40f45e534-00054a1b",
+                            "type": "view",
+                            "role": "3d",
+                            "name": "{3D}",
+                            "status": "success",
+                            "progress": "complete",
+                            "camera": [
+                                46.27482604980469,
+                                -11.87308406829834,
+                                106.92277526855469,
+                                46.27482604980469,
+                                -11.87308406829834,
+                                5.178805828094482,
+                                0,
+                                1,
+                                -2.0981531528614113e-16,
+                                2.1813738346099854,
+                                0,
+                                1,
+                                1
+                            ]
+                        },
+                        {
+                            "guid": "93c8e9b4-2ea8-430b-a65c-d7c0e970bbef",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Vista 3D/0f7af224-8966-4a18-a6b9-66a40f45e534-00054a1b/{3D}1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "da79d9cd-4a61-5831-60f0-a8c3dfcb4a0c",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Vista 3D/0f7af224-8966-4a18-a6b9-66a40f45e534-00054a1b/{3D}2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "1907aa0c-bb77-8e08-ace9-8567ecb58b03",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Vista 3D/0f7af224-8966-4a18-a6b9-66a40f45e534-00054a1b/{3D}4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "role": "graphics",
+                            "mime": "application/autodesk-svf2",
+                            "guid": "f303c571-dbb8-3fa3-2d01-f62df5f67da2",
+                            "type": "resource"
+                        }
+                    ]
+                },
+                {
+                    "guid": "9f3c7d7b-9f16-0f6c-421a-e619ac1d7c0e",
+                    "type": "geometry",
+                    "role": "3d",
+                    "name": "Constru\u00e7\u00e3o nova",
+                    "viewableID": "c884ae1b-61e7-4f9d-0001-719e20b22d0b-000d2d87",
+                    "phaseNames": "Constru\u00e7\u00e3o nova",
+                    "phaseIds": "c8c9591b-fcaf-44ac-94c8-6e357de0a0cf-000153b1",
+                    "status": "success",
+                    "hasThumbnail": "true",
+                    "progress": "complete",
+                    "children": [
+                        {
+                            "guid": "c884ae1b-61e7-4f9d-0001-719e20b22d0b-000d2d87",
+                            "type": "view",
+                            "role": "3d",
+                            "name": "Constru\u00e7\u00e3o nova",
+                            "status": "success",
+                            "progress": "complete",
+                            "camera": [
+                                99.03720092773438,
+                                -58.106544494628906,
+                                49.772972106933594,
+                                54.443031311035156,
+                                -13.51237678527832,
+                                5.178805828094482,
+                                -0.40824830532073975,
+                                0.40824830532073975,
+                                0.8164966106414795,
+                                1.333956003189087,
+                                0,
+                                1,
+                                1
+                            ]
+                        },
+                        {
+                            "guid": "2ebbd643-70cc-dda0-5ec3-dbe3c8677bfd",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Vista 3D/08f99ae5-b8be-4f8d-881b-128675723c10/119de807-176c-4a9b-be94-4e397e07abf3-000d2d87/Constru\u00e7\u00e3o nova1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "a8a906de-b333-d87d-d988-77f15846c0f3",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Vista 3D/08f99ae5-b8be-4f8d-881b-128675723c10/119de807-176c-4a9b-be94-4e397e07abf3-000d2d87/Constru\u00e7\u00e3o nova2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "5a1beac9-a8b0-9d8c-2adf-cc0b30dc0171",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Vista 3D/08f99ae5-b8be-4f8d-881b-128675723c10/119de807-176c-4a9b-be94-4e397e07abf3-000d2d87/Constru\u00e7\u00e3o nova4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "role": "graphics",
+                            "mime": "application/autodesk-svf2",
+                            "guid": "8aa16777-ec15-222b-9b64-8dcc2c96b5d6",
+                            "type": "resource"
+                        }
+                    ],
+                    "isMasterView": true
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094ab7",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "01 - Implanta\u00e7\u00e3o",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094ab7",
+                    "phaseNames": "Constru\u00e7\u00e3o nova",
+                    "phaseIds": "c8c9591b-fcaf-44ac-94c8-6e357de0a0cf-000153b1",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "4357c748-8e22-8af3-b8c5-bbf82334f9d7",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ab7/pdf/01 - Implanta\u00e7\u00e3o1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "466fdf23-2500-70ab-f769-bbab452008cc",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ab7/pdf/01 - Implanta\u00e7\u00e3o2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "dbdc09bd-5b9e-c777-83ec-4f35deec5801",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ab7/pdf/01 - Implanta\u00e7\u00e3o4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "afef733d-c068-4bce-b2c5-f8db248b4169",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ab7/pdf/01 - Implanta\u00e7\u00e3o.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "0ed2b9ea-9c6f-4c6e-abf3-2acaf57ebc2e",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "01 - Implanta\u00e7\u00e3o",
+                            "viewbox": [
+                                0,
+                                0,
+                                839.978,
+                                593.979
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094ac6",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "02 - Planta pav. subsolo -2",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094ac6",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "888b1733-99e2-c102-1e62-a77e64dacebb",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ac6/pdf/02 - Planta pav_ subsolo -21.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "615e9f4b-0b1b-7cd5-3741-812c450f6fbf",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ac6/pdf/02 - Planta pav_ subsolo -22.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "b9c2f95c-14d2-a6ba-885c-be7d28a073a2",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ac6/pdf/02 - Planta pav_ subsolo -24.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "2a147536-9a0e-41ca-8c3b-d7fb07d152d2",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ac6/pdf/02 - Planta pav_ subsolo -2.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "0a02f0b3-f739-4032-b781-ecd810cf5f54",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "02 - Planta pav. subsolo -2",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094ad5",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "03 - Planta pav. subsolo -1",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094ad5",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "2b52d3e3-58d2-d9f8-0bbd-adb955df7204",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ad5/pdf/03 - Planta pav_ subsolo -11.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "6b661564-bee6-07bc-ff58-4cf3bd025c1f",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ad5/pdf/03 - Planta pav_ subsolo -12.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d20ed056-1c8b-0c51-2648-04614db5129d",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ad5/pdf/03 - Planta pav_ subsolo -14.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "707bfa93-1905-41e8-bc7c-a1cd2a474a7e",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ad5/pdf/03 - Planta pav_ subsolo -1.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "4fd6abc2-f2f5-40a0-b561-21650d14ac05",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "03 - Planta pav. subsolo -1",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094ae4",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "04 - Planta pav. t\u00e9rreo",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094ae4",
+                    "phaseNames": "Constru\u00e7\u00e3o nova",
+                    "phaseIds": "c8c9591b-fcaf-44ac-94c8-6e357de0a0cf-000153b1",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "30578a32-2505-3878-1aaa-2dd0a528f4cf",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ae4/pdf/04 - Planta pav_ t\u00e9rreo1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "f0a29677-f78b-c76d-4e8d-14079093aeea",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ae4/pdf/04 - Planta pav_ t\u00e9rreo2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "1f02cc22-b905-e1b3-e35a-c6614aa32c3c",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ae4/pdf/04 - Planta pav_ t\u00e9rreo4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d776e02f-de78-4dcf-9332-d014c87abd7f",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ae4/pdf/04 - Planta pav_ t\u00e9rreo.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "42e74d30-4eec-49f9-97b5-27d96f718488",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "04 - Planta pav. t\u00e9rreo",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094af3",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "05 - Planta pav. 1",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094af3",
+                    "phaseNames": "Constru\u00e7\u00e3o nova",
+                    "phaseIds": "c8c9591b-fcaf-44ac-94c8-6e357de0a0cf-000153b1",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "353426d9-5510-472c-6323-04172e8cb0b6",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094af3/pdf/05 - Planta pav_ 11.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d67b4102-f318-59f5-22cd-8d320e456c2e",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094af3/pdf/05 - Planta pav_ 12.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "b7bac9dd-e604-3c6a-66f2-98e360dee2b1",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094af3/pdf/05 - Planta pav_ 14.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d543035f-0c53-46fa-b1c6-3310c7a63fd9",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094af3/pdf/05 - Planta pav_ 1.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "69a612c8-8228-4d68-9977-4b5c3e7f65dc",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "05 - Planta pav. 1",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b02",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "06 - Planta pav. 2",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b02",
+                    "phaseNames": "Constru\u00e7\u00e3o nova",
+                    "phaseIds": "c8c9591b-fcaf-44ac-94c8-6e357de0a0cf-000153b1",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "22f443e6-2bab-59db-54c3-1dd944b66d1f",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b02/pdf/06 - Planta pav_ 21.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "8b46984c-ebbb-ed4c-aa06-97eaefa4aeac",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b02/pdf/06 - Planta pav_ 22.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "4e180532-5539-fdbc-3dcd-57651df3770e",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b02/pdf/06 - Planta pav_ 24.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "6f8e8bee-48fb-4718-9e96-259d6337637c",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b02/pdf/06 - Planta pav_ 2.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "5fa5fcde-d0dd-4c0a-be67-e9060355f9a8",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "06 - Planta pav. 2",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b11",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "07 - Planta pav. 3",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b11",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "12760973-a7bf-b495-7969-4c7728164db7",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b11/pdf/07 - Planta pav_ 31.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "eeb4e004-56b7-c067-43ac-3a19c7bf4c31",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b11/pdf/07 - Planta pav_ 32.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "92e7acac-ef0a-b928-fb90-81ac6871eb0b",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b11/pdf/07 - Planta pav_ 34.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "b9f2554f-e4a7-42d1-ad7e-c409fc690218",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b11/pdf/07 - Planta pav_ 3.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "9b935cb6-964e-4cc6-ab35-67694d5caffe",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "07 - Planta pav. 3",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b20",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "08 - Planta pav. 4",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b20",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "c8aae1d7-016d-ef53-a69f-736113483ce3",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b20/pdf/08 - Planta pav_ 41.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "0d8103e9-7da1-102f-6930-4b9492939066",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b20/pdf/08 - Planta pav_ 42.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "fc220714-a844-50b4-ffa2-9f67084fa878",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b20/pdf/08 - Planta pav_ 44.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "21a8c43a-9cc9-4b99-b9b8-e1cd62f30a09",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b20/pdf/08 - Planta pav_ 4.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "191cc1ae-d31d-4142-9788-4b9cd2ba69fe",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "08 - Planta pav. 4",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b2f",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "09 - Planta pav. 5",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b2f",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "d76bd252-30b7-5942-48c5-7be093544f22",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b2f/pdf/09 - Planta pav_ 51.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "92d90cf7-30f9-cf74-1e97-f888d850befe",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b2f/pdf/09 - Planta pav_ 52.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "0f932e40-d620-b70e-509c-c532eec1836b",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b2f/pdf/09 - Planta pav_ 54.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "97b07d44-50bb-44fb-be49-c8d62afdb9de",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b2f/pdf/09 - Planta pav_ 5.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "3620164d-e966-4e49-a3c5-ed934ac622fd",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "09 - Planta pav. 5",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b3e",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "10 - Planta pav. 6",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b3e",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "4cc9b19b-a49b-ae8b-1e4b-9ad72edc6a42",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b3e/pdf/10 - Planta pav_ 61.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "ec399b5d-9cf0-8670-4d2e-1af1f8bd4905",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b3e/pdf/10 - Planta pav_ 62.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "e1cefccf-88ef-27db-408f-f1c34eb7f3dd",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b3e/pdf/10 - Planta pav_ 64.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "f5306190-2f74-492f-a94e-d650d6d55b7b",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b3e/pdf/10 - Planta pav_ 6.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "667a5df1-3e41-458c-940f-c98e78ee2fdc",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "10 - Planta pav. 6",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b4d",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "11 - Planta pav. 7",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b4d",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "182ec58f-23a9-86b3-1aac-c4053ae91ebb",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b4d/pdf/11 - Planta pav_ 71.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "5fc597ba-8763-6a0e-4e3a-39c3a54d0946",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b4d/pdf/11 - Planta pav_ 72.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "00c3accb-d6c9-53a8-91c4-b02dedb05530",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b4d/pdf/11 - Planta pav_ 74.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "05d1906d-183f-4136-9531-1fade7aa83c7",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b4d/pdf/11 - Planta pav_ 7.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d1f50163-e4c4-45f7-9b22-28b90debf0ea",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "11 - Planta pav. 7",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b5c",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "12 - Planta pav. 8",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b5c",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "21442cd9-3e4f-65f2-c5e2-4a7cb34f89a1",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b5c/pdf/12 - Planta pav_ 81.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "73c96b45-82c7-c946-0df9-371c51882105",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b5c/pdf/12 - Planta pav_ 82.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "00124e82-fce3-e9a9-52ba-0efdd8d41711",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b5c/pdf/12 - Planta pav_ 84.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "49ddebc1-ee28-41df-89ef-784f380e2462",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b5c/pdf/12 - Planta pav_ 8.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "bc642a93-68dd-4eab-9ef7-153693dec972",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "12 - Planta pav. 8",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b6b",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "13 - Planta pav. 9",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b6b",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "64efb041-f166-0e4f-ad68-31a0ffaafce7",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b6b/pdf/13 - Planta pav_ 91.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "1d060a19-6239-8a22-ae86-b388f260c62f",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b6b/pdf/13 - Planta pav_ 92.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "1dbde83c-2c68-a505-fe19-27049c316311",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b6b/pdf/13 - Planta pav_ 94.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "f6841e09-b437-4902-936f-675adfeeb63c",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b6b/pdf/13 - Planta pav_ 9.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "a187557e-879c-42b6-a647-a3d63d8c1136",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "13 - Planta pav. 9",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b7a",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "14 - Planta pav. 10",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b7a",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "acf03ffd-7f88-7f4f-a2e8-de25b440aa76",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b7a/pdf/14 - Planta pav_ 101.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "998e01e7-d138-97a8-1966-c60d76a3f47b",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b7a/pdf/14 - Planta pav_ 102.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "39f78238-7dcd-b2b2-77c6-8e6de8c1cd26",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b7a/pdf/14 - Planta pav_ 104.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "fe808224-b16b-414a-bf02-ceecf6d8a66a",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b7a/pdf/14 - Planta pav_ 10.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "122f81a7-2a56-44f7-b341-0a7ac382ab4d",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "14 - Planta pav. 10",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b89",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "15 - Planta pav. 11",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b89",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "424a7514-17a6-22a3-66bc-fcdbe433c7b2",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b89/pdf/15 - Planta pav_ 111.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "74f61a20-9a39-a2dc-1b48-751fba4434ed",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b89/pdf/15 - Planta pav_ 112.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "bce73b40-2197-ef47-f6b4-c86add28ea28",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b89/pdf/15 - Planta pav_ 114.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "6394de70-7d6c-4f6f-ab35-b7c473c3dc5f",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b89/pdf/15 - Planta pav_ 11.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d93044c7-77fb-45ed-a4d9-93e9b6d82039",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "15 - Planta pav. 11",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094b98",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "16 - Planta pav. 12",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094b98",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "f81c47be-da2f-fbe7-1609-255edbad4f23",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b98/pdf/16 - Planta pav_ 121.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "1672c3c7-f0bf-d953-896e-f43cc34a2c54",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b98/pdf/16 - Planta pav_ 122.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "c30a4a63-e2b0-e028-0854-997c6afb8cfa",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b98/pdf/16 - Planta pav_ 124.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "22648b3f-115e-46f6-9870-b63c5de88217",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094b98/pdf/16 - Planta pav_ 12.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d7228300-98c8-481f-a0d7-187929a9f640",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "16 - Planta pav. 12",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094ba7",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "17 - Planta pav. 13",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094ba7",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "25e9656d-63cc-56d7-99c0-aef100d54082",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ba7/pdf/17 - Planta pav_ 131.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "2245e784-9dc4-f158-6158-e4e477e550f6",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ba7/pdf/17 - Planta pav_ 132.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "654c3406-b5fa-ee8d-e295-32cd31dd2848",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ba7/pdf/17 - Planta pav_ 134.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "369d7825-0096-47bd-b689-0bca839280d0",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094ba7/pdf/17 - Planta pav_ 13.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "14f2198d-7fa1-4896-93a7-12c28233f29f",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "17 - Planta pav. 13",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094bb6",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "18 - Planta pav. 14",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094bb6",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "32e6f968-6885-9624-3f40-ba9979b57f6a",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bb6/pdf/18 - Planta pav_ 141.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "ff3882fe-a35d-9ea0-eb6e-4836800ca3fa",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bb6/pdf/18 - Planta pav_ 142.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "2c07d968-4d97-ca9f-3105-a938978c71b1",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bb6/pdf/18 - Planta pav_ 144.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "0d66526f-1bf0-42ad-a744-5522e7e5b035",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bb6/pdf/18 - Planta pav_ 14.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "8cd8887e-4fe2-4bfb-b5ea-34825c8587b5",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "18 - Planta pav. 14",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094bc5",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "19 - Planta pav. 15/16 E 17",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094bc5",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "c2af1f64-eea9-e487-36a9-04544cebdec2",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bc5/pdf/19 - Planta pav_ 15_16 E 171.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "b3403582-8d68-10b7-a1c0-68a39b511525",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bc5/pdf/19 - Planta pav_ 15_16 E 172.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "2592aa16-2782-c49b-2ad1-6fe1c095a610",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bc5/pdf/19 - Planta pav_ 15_16 E 174.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "e4757377-5b07-41a3-bada-8f79081ae480",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bc5/pdf/19 - Planta pav_ 15_16 E 17.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "db710d3e-d490-42e7-975f-1238a3bc641d",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "19 - Planta pav. 15/16 E 17",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094bd4",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "20 - Cortes",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094bd4",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "a4508048-6ac5-8b4e-5a69-62ace8386944",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bd4/pdf/20 - Cortes1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "612c9dd5-fdb7-454f-3561-48c2e9872a7a",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bd4/pdf/20 - Cortes2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "1cc9d0e6-6570-3711-a101-175b4513994e",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bd4/pdf/20 - Cortes4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "e0f4ff5e-4ea5-428d-b7e2-99ab12e2b15d",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bd4/pdf/20 - Cortes.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "15be9932-cba8-4b61-bbfe-d74246fe249a",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "20 - Cortes",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094be3",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "25 - Volumetria",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094be3",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "70d5988a-d1e9-31b3-526a-ec32f9053193",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094be3/pdf/25 - Volumetria1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d18cbd51-6089-ed84-7d37-6594d9ccb5bb",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094be3/pdf/25 - Volumetria2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "9ee843de-2f18-8f32-8b66-cf44e8e52177",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094be3/pdf/25 - Volumetria4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "b3f5ee62-9eda-482f-8839-12a87a034651",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094be3/pdf/25 - Volumetria.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "158b68bd-713e-45a5-907a-34ab34e71938",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "25 - Volumetria",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094bf2",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "24 - Isom\u00e9tricas",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094bf2",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "8e1b7d04-f3d7-d673-6e09-4c42097a4b12",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bf2/pdf/24 - Isom\u00e9tricas1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "809889c9-e970-4d48-8f05-02c206f8cb83",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bf2/pdf/24 - Isom\u00e9tricas2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "d873002e-b17c-e9a6-3c15-7803691f9092",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bf2/pdf/24 - Isom\u00e9tricas4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "569458ae-1577-4e0d-910f-da6ce8819e58",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094bf2/pdf/24 - Isom\u00e9tricas.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "f20e4043-dc1c-47f3-be2b-f9ceaefc4e6e",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "24 - Isom\u00e9tricas",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "926d9253-1209-4433-875f-6fdae75d7e46-00094c01",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "23 - Fachadas",
+                    "viewableID": "926d9253-1209-4433-875f-6fdae75d7e46-00094c01",
+                    "phaseNames": "Constru\u00e7\u00e3o nova",
+                    "phaseIds": "c8c9591b-fcaf-44ac-94c8-6e357de0a0cf-000153b1",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "a84f6bf1-419d-b531-c843-10674982d36b",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094c01/pdf/23 - Fachadas1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "67cdf332-c074-fff1-ac3b-2df8f9a4bf8b",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094c01/pdf/23 - Fachadas2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "0cbb92b1-079b-f19d-10f3-9577ac41848b",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094c01/pdf/23 - Fachadas4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "48d650ca-bdd7-4653-8b19-de4256157b9f",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/926d9253-1209-4433-875f-6fdae75d7e46-00094c01/pdf/23 - Fachadas.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "6a3c9841-38b7-4f07-acb3-d8925d84f3ab",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "23 - Fachadas",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "dcc277fe-e4e2-4c4c-9cb3-fa51de75ece3-000af263",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "21 - Cortes",
+                    "viewableID": "dcc277fe-e4e2-4c4c-9cb3-fa51de75ece3-000af263",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "2bda777b-f69e-63d7-236b-65767156230d",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/dcc277fe-e4e2-4c4c-9cb3-fa51de75ece3-000af263/pdf/21 - Cortes1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "ef6a5cc2-8ebc-81fe-edf1-e1bdde782f71",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/dcc277fe-e4e2-4c4c-9cb3-fa51de75ece3-000af263/pdf/21 - Cortes2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "4edcd39c-6586-ee84-7b12-38431c2a9a0d",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/dcc277fe-e4e2-4c4c-9cb3-fa51de75ece3-000af263/pdf/21 - Cortes4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "941d3436-dcfe-40c7-8cc3-862b462adf7f",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/dcc277fe-e4e2-4c4c-9cb3-fa51de75ece3-000af263/pdf/21 - Cortes.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "5d541d26-a296-4f0f-b2a5-d131e0d48010",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "21 - Cortes",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "guid": "00bf6ad3-0a6c-4bfa-a146-814970d4c98a-000afd10",
+                    "type": "geometry",
+                    "role": "2d",
+                    "name": "22 - Fachadas",
+                    "viewableID": "00bf6ad3-0a6c-4bfa-a146-814970d4c98a-000afd10",
+                    "phaseNames": "Constru\u00e7\u00e3o nova",
+                    "phaseIds": "c8c9591b-fcaf-44ac-94c8-6e357de0a0cf-000153b1",
+                    "status": "success",
+                    "progress": "complete",
+                    "isVectorPDF": true,
+                    "properties": {
+                        "Print Setting": {
+                            "Layout": "Landscape",
+                            "Paper size": "ISO A4, 210 x 297 mm"
+                        }
+                    },
+                    "units": "mm",
+                    "hasThumbnail": "true",
+                    "children": [
+                        {
+                            "guid": "0e3bed72-28bd-2424-2357-d64c361b8add",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/00bf6ad3-0a6c-4bfa-a146-814970d4c98a-000afd10/pdf/22 - Fachadas1.png",
+                            "resolution": [
+                                100,
+                                100
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "f81e01ba-7038-855c-b06d-56dd4eaaedd3",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/00bf6ad3-0a6c-4bfa-a146-814970d4c98a-000afd10/pdf/22 - Fachadas2.png",
+                            "resolution": [
+                                200,
+                                200
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "e40bac16-ff28-6e81-e843-5f670801b88e",
+                            "type": "resource",
+                            "role": "thumbnail",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/00bf6ad3-0a6c-4bfa-a146-814970d4c98a-000afd10/pdf/22 - Fachadas4.png",
+                            "resolution": [
+                                400,
+                                400
+                            ],
+                            "mime": "image/png",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "a6378287-189f-4baa-bdc5-9330fe3aab47",
+                            "type": "resource",
+                            "role": "pdf-page",
+                            "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/Resource/Folha/00bf6ad3-0a6c-4bfa-a146-814970d4c98a-000afd10/pdf/22 - Fachadas.pdf",
+                            "mime": "application/pdf",
+                            "status": "success"
+                        },
+                        {
+                            "guid": "f317f2e2-63b6-452d-adb6-fcfb0c91c715",
+                            "type": "view",
+                            "role": "2d",
+                            "name": "22 - Fachadas",
+                            "viewbox": [
+                                0,
+                                0,
+                                1187.958,
+                                839.978
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "status": "success",
+            "progress": "complete",
+            "outputType": "thumbnail",
+            "children": [
+                {
+                    "guid": "db899ab5-939f-e250-d79d-2d1637ce4565",
+                    "type": "resource",
+                    "role": "thumbnail",
+                    "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/preview1.png",
+                    "resolution": [
+                        100,
+                        100
+                    ],
+                    "mime": "image/png",
+                    "status": "success"
+                },
+                {
+                    "guid": "3f6c118d-f551-7bf0-03c9-8548d26c9772",
+                    "type": "resource",
+                    "role": "thumbnail",
+                    "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/preview2.png",
+                    "resolution": [
+                        200,
+                        200
+                    ],
+                    "mime": "image/png",
+                    "status": "success"
+                },
+                {
+                    "guid": "4e751806-0920-ce32-e9fd-47c3cec21536",
+                    "type": "resource",
+                    "role": "thumbnail",
+                    "urn": "urn:adsk.viewing:fs.file:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamVjdC0wMDkyZWJkMC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA/output/preview4.png",
+                    "resolution": [
+                        400,
+                        400
+                    ],
+                    "mime": "image/png",
+                    "status": "success"
+                }
+            ]
+        }
+    ]
+}
