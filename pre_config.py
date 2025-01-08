@@ -182,14 +182,13 @@ if __name__ == "__main__":
             if status in ["success", "failed"]:
                 save_manifest(manifest)
                 master_view = extract_master_view(manifest)
-                manifest_urn = manifest.get("urn", "")
                 if master_view:
-                    save_config_js(manifest_urn, master_view["guid"])
+                    save_config_js(urn, master_view["guid"])
                 save_env_file({
-                    "CLIENT_ID": CLIENT_ID,
-                    "CLIENT_SECRET": CLIENT_SECRET,
-                    "BUCKET_KEY": BUCKET_KEY,
-                    "URN": manifest_urn
+                    "APS_CLIENT_ID": CLIENT_ID,
+                    "APS_CLIENT_SECRET": CLIENT_SECRET,
+                    "APS_BUCKET": BUCKET_KEY,
+                    "URN": urn
                 })
                 external_ip = get_external_ip()
                 if external_ip:
