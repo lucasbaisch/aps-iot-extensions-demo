@@ -170,7 +170,7 @@ if __name__ == "__main__":
         if not FILE_PATH:
             FILE_PATH = "sala_de_descanso.rvt"
         OBJECT_NAME = os.path.basename(FILE_PATH)
-        BUCKET_KEY = generate_bucket_key()
+        BUCKET_KEY = "projetos-aps"  # generate_bucket_key()
 
         print("Obtendo token de acesso...")
         access_token = get_access_token(CLIENT_ID, CLIENT_SECRET)
