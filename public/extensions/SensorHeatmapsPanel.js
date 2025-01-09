@@ -21,7 +21,7 @@ export class SensorHeatmapsPanel extends Autodesk.Viewing.UI.DockingPanel {
         this.content.style.opacity = 0.9;
         this.content.innerHTML = `
             <div style="height: 50px; padding: 1em; box-sizing: border-box;">
-                <label>Channel</label>
+                <label>Sensores</label>
                 <select id="iot-heatmap-channel">
                 </select>
             </div>
@@ -40,12 +40,24 @@ export class SensorHeatmapsPanel extends Autodesk.Viewing.UI.DockingPanel {
         }
         const previousValue = this.dropdown.value; // Armazena o valor selecionado anteriormente
         this.dropdown.innerHTML = '';
+    
+        // Coleta as opções em um array
+        const options = [];
         for (const [channelId, channel] of dataView.getChannels().entries()) {
+            options.push({ value: channelId, text: channel.name });
+        }
+    
+        // Ordena as opções em ordem alfabética
+        options.sort((a, b) => a.text.localeCompare(b.text));
+    
+        // Adiciona as opções ordenadas ao dropdown
+        for (const optionData of options) {
             const option = document.createElement('option');
-            option.value = channelId;
-            option.innerText = channel.name;
+            option.value = optionData.value;
+            option.innerText = optionData.text;
             this.dropdown.appendChild(option);
         }
+    
         // Verifica se o previousValue ainda existe nas novas opções
         if (Array.from(this.dropdown.options).some(option => option.value === previousValue)) {
             this.dropdown.value = previousValue; // Define o valor selecionado anteriormente

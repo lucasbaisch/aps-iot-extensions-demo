@@ -14,24 +14,24 @@ const SENSORS = {
 
 const CHANNELS = {
     'temp': {
-        name: 'Temperature',
-        description: 'External temperature in degrees Celsius.',
+        name: 'Temperatura',
+        description: 'Temperature em graus Celsius.',
         type: 'double',
         unit: '°C',
         min: 18.0,
         max: 28.0
     },
     'umidade': {
-        name: 'umidade',    
-        description: 'Level of carbon dioxide.',
+        name: 'Umidade',    
+        description: 'Nível de umidade.',
         type: 'double',
         unit: 'ppm',
         min: 482.81,
         max: 640.00
     },
     'co': {
-        name: 'monoxido de carbono',
-        description: 'Level of oxigen.',
+        name: 'Monóxido de carbono',
+        description: 'Nível de oxigênio.',
         type: 'double',
         unit: 'ppm',
         min: 0,
@@ -39,7 +39,7 @@ const CHANNELS = {
     },
     'ruido': {
         name: 'Ruído',
-        description: 'Level of noise.',
+        description: 'Nível de ruido.',
         type: 'double',
         unit: 'dB',
         min: 0,
