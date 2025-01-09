@@ -80,6 +80,6 @@ if __name__ == "__main__":
     # user_input = input().strip().lower()
     user_input = 's'
 
-    populate = user_input == 's'
+    populate = False
 
     initialize_database(host, user, password, database, populate)
