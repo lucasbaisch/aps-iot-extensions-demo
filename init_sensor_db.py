@@ -75,8 +75,9 @@ if __name__ == "__main__":
     password = os.getenv("DB_PASSWORD", "password")
     database = os.getenv("DB_NAME", "sensors")
 
-    print("Deseja preencher a tabela 'sensors' com 1 mês de dados falsos? (s/n)")
-    user_input = input().strip().lower()
+    # print("Deseja preencher a tabela 'sensors' com 1 mês de dados falsos? (s/n)")
+    # user_input = input().strip().lower()
+    user_input = 's'
 
     populate = user_input == 's'
 
