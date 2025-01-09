@@ -42,7 +42,7 @@ def initialize_database(host, user, password, database, populate=False):
                     ruido DOUBLE
                 )
             ''')
-            print(\"Tabela 'sensors' criada ou já existente.\")
+            print("Tabela 'sensors' criada ou já existente.")
 
             if populate:
                 # Apagar todos os dados existentes na tabela
