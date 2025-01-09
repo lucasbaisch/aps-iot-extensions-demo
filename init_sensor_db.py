@@ -42,7 +42,7 @@ def initialize_database(host, user, password, database, populate=False):
                     ruido DOUBLE
                 )
             ''')
-            print("Tabela 'sensors' criada ou já existente.")
+            print(\"Tabela 'sensors' criada ou já existente.\")
 
             if populate:
                 # Apagar todos os dados existentes na tabela
@@ -53,7 +53,7 @@ def initialize_database(host, user, password, database, populate=False):
                 end = datetime.now()
                 start = end - timedelta(days=30)
                 resolution = timedelta(minutes=1)
-                fake_data = generate_fake_data(start, end, resolution)
+                fake_data = list(generate_fake_data(start, end, resolution))  # Converte para lista
                 cursor.executemany('''
                     INSERT INTO sensors (time, temp, umidade, co, ruido) 
                     VALUES (%s, %s, %s, %s, %s)
@@ -68,6 +68,7 @@ def initialize_database(host, user, password, database, populate=False):
         if connected:
             cursor.close()
             conn.close()
+
 
 if __name__ == "__main__":
     host = os.getenv("DB_HOST", "127.0.0.1")
