@@ -45,7 +45,7 @@ export class SensorListPanel extends Autodesk.Viewing.UI.PropertyPanel {
         if (updateColumns) {
             const columns = [
                 { title: 'Sensor', field: 'sensor' },
-                { title: 'Group', field: 'group' }
+                // { title: 'Group', field: 'group' }
             ];
             for (const [channelId, channel] of dataView.getChannels().entries()) {
                 columns.push({ title: channel.name, field: channelId });
