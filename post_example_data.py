@@ -4,8 +4,8 @@ from datetime import datetime, timedelta
 import time
 
 # Configurações do servidor
-# SERVER_URL = "http://34.59.64.61:3000/api/sensors"  # Altere para o IP/URL do seu servidor
-SERVER_URL = "http://localhost:3000/api/sensors"  # Altere para o IP/URL do seu servidor
+SERVER_URL = "http://104.154.230.185:3000/api/sensors"  # Altere para o IP/URL do seu servidor
+# SERVER_URL = "http://localhost:3000/api/sensors"  # Altere para o IP/URL do seu servidor
 
 def generate_sensor_data():
     """

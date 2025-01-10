@@ -101,7 +101,8 @@ app.post('/api/sensors', async (req, res) => {
         res.status(201).send('Dados salvos com sucesso.');
     } catch (err) {
         console.error('Erro ao inserir dados:', err.message);
-        res.status(500).send('Erro ao salvar os dados.');
+        // return the error and err.message
+        res.status(500).send('Erro ao inserir dados: ' + err.message);
     }
 });
 

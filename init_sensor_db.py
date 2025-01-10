@@ -43,6 +43,9 @@ def initialize_database(host, user, password, database, populate=False):
                 )
             ''')
             print("Tabela 'sensors' criada ou já existente.")
+            
+            #Deleta dados anteriores a 2025
+            cursor.execute('DELETE FROM sensors WHERE time < "2025-01-01"')
 
             if populate:
                 # Apagar todos os dados existentes na tabela
