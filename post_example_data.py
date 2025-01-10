@@ -57,6 +57,7 @@ def post_sensor_data(data):
             print(f"Dados enviados {datetime.fromtimestamp(data['time'])}: {data}")
         else:
             print(f"Erro ao enviar dados: {response.status_code}, {response.text}")
+        time.sleep(1)  # Pequena pausa para evitar sobrecarga no servidor
     except requests.RequestException as e:
         print(f"Erro de conexão: {e}")
 
@@ -65,7 +66,7 @@ if __name__ == "__main__":
     # start_time = 01/01/2024
     # end_time = 03/01/2024
     start_time = datetime(2024, 1, 1).timestamp()
-    end_time = datetime(2024, 3, 1).timestamp()
+    end_time = datetime(2024, 2, 1).timestamp()
     past_sensor_data_list = generate_past_sensor_data(start_time, end_time)
     
     for past_sensor_data in past_sensor_data_list[::-1]:  # Envia os dados do mais antigo para o mais recente
