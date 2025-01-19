@@ -76,8 +76,8 @@ if __name__ == "__main__":
         # time.sleep(0.1)  # Pequena pausa para evitar sobrecarga no servidor
     print("Envio de dados de um mes atrás até agora concluído.")
     
-    while True:
-        print("Enviando dados do sensor em loop...")  # Envia dados do sensor em loop a cada minuto
-        sensor_data = generate_sensor_data()
-        post_sensor_data(sensor_data)
-        time.sleep(60)  # Aguarda 60 segundos antes de enviar os próximos dados
+    # while True:
+    #    print("Enviando dados do sensor em loop...")  # Envia dados do sensor em loop a cada minuto
+    #    sensor_data = generate_sensor_data()
+    #    post_sensor_data(sensor_data)
+    #    time.sleep(60)  # Aguarda 60 segundos antes de enviar os próximos dados
