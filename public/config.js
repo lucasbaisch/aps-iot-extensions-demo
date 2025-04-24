@@ -1,4 +1,4 @@
-export const APS_MODEL_URN = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamV0by00NjZkNGZiNy9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA==';
+export const APS_MODEL_URN = 'dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cHJvamV0by05MDdmZjM4NC9zYWxhX2RlX2Rlc2NhbnNvLnJ2dA==';
 export const APS_MODEL_VIEW = '9f3c7d7b-9f16-0f6c-421a-e619ac1d7c0e';
 export const APS_MODEL_DEFAULT_FLOOR_INDEX = 2;
 // Datatime padrao é o dia de hoje das 00:00 até 23:59

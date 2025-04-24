@@ -132,6 +132,8 @@ app.post('/api/sensors/aggregate', async (req, res) => {
 
         const resolutionSeconds = resolution * 60;
 
+        console.log('Parâmetros recebidos:', { startBrazil, endBrazil, resolutionSeconds });
+
         // Query compatível com MariaDB
         const query = `
             SELECT 
@@ -147,6 +149,12 @@ app.post('/api/sensors/aggregate', async (req, res) => {
         `;
 
         const [rows] = await db.query(query, [startBrazil, endBrazil, resolutionSeconds]);
+
+        console.log('Resultados da consulta:', rows);
+
+        if (!rows || rows.length === 0) {
+            return res.status(200).json({ timestamps: [], data: {} });
+        }
 
         // Formatar os resultados para o cliente
         const timestamps = rows.map(row => row.time);
