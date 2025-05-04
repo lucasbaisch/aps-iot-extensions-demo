@@ -97,6 +97,14 @@ const chartColors = {
     ruido: '#6f42c1' // Roxo
 };
 
+// Objeto para armazenar o estado de visibilidade das séries
+const seriesVisibility = {
+    temp: true,
+    umidade: true,
+    co: true,
+    ruido: true
+};
+
 // Função para criar configuração de dataset
 function createDatasetConfig(metric, data) {
     return {
@@ -111,7 +119,7 @@ function createDatasetConfig(metric, data) {
         pointBorderColor: '#fff',
         pointBorderWidth: 2,
         fill: false,
-        hidden: false,
+        hidden: !seriesVisibility[metric],
         tension: 0
     };
 }
@@ -238,26 +246,64 @@ function toggleView() {
     const toggleButton = document.getElementById('toggle-view');
 
     if (combinedChartDiv.style.display === 'none') {
+        // Mudando para visualização combinada
         combinedChartDiv.style.display = 'block';
         individualChartsDiv.style.display = 'none';
         toggleButton.textContent = 'Ver Gráficos Separados';
     } else {
+        // Mudando para visualização separada
         combinedChartDiv.style.display = 'none';
         individualChartsDiv.style.display = 'block';
         toggleButton.textContent = 'Ver Gráfico Combinado';
+        
+        // Reseta a visibilidade de todas as séries
+        Object.keys(seriesVisibility).forEach(metric => {
+            seriesVisibility[metric] = true;
+            const chart = charts[metric];
+            if (chart && chart.data.datasets[0]) {
+                chart.data.datasets[0].hidden = false;
+                chart.update();
+            }
+        });
     }
+}
+
+// Função para converter data do formato brasileiro para o formato da API
+function convertDateToAPIFormat(dateStr) {
+    const [datePart, timePart] = dateStr.split(' ');
+    const [day, month, year] = datePart.split('/');
+    return `${year}-${month}-${day} ${timePart}`;
+}
+
+// Função para atualizar os últimos valores
+function updateLastValues(data) {
+    const sensorData = data.data['sensor-1'];
+    const lastIndex = data.timestamps.length - 1;
+
+    // Atualiza cada métrica
+    Object.keys(sensorData).forEach(metric => {
+        const lastValue = sensorData[metric][lastIndex];
+        const element = document.getElementById(`last-${metric}`);
+        if (element) {
+            element.textContent = lastValue.toFixed(2);
+        }
+    });
 }
 
 // Função para atualizar os gráficos
 async function updateGraphs() {
     try {
-        const startDate = document.getElementById('start-date').value;
-        const endDate = document.getElementById('end-date').value;
+        const startDate = document.getElementById('start-time').value;
+        const endDate = document.getElementById('end-time').value;
         const resolution = parseInt(document.getElementById('resolution').value);
 
         if (!startDate || !endDate || isNaN(resolution)) {
             throw new Error('Por favor, preencha todos os campos corretamente.');
         }
+
+        // Converte as datas para o formato da API
+        const apiStartDate = convertDateToAPIFormat(startDate);
+        const apiEndDate = convertDateToAPIFormat(endDate);
 
         const response = await fetch('/api/sensors/aggregate', {
             method: 'POST',
@@ -265,8 +311,8 @@ async function updateGraphs() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                start: startDate,
-                end: endDate,
+                start: apiStartDate,
+                end: apiEndDate,
                 resolution: resolution
             })
         });
@@ -281,6 +327,9 @@ async function updateGraphs() {
         if (!data.timestamps || data.timestamps.length === 0) {
             throw new Error('Nenhum dado encontrado para o período selecionado');
         }
+
+        // Atualiza os últimos valores
+        updateLastValues(data);
 
         const timestamps = data.timestamps;
         const sensorData = data.data['sensor-1'];
@@ -300,21 +349,25 @@ async function updateGraphs() {
                 y: value
             }));
 
-            // Limpa os dados antigos e adiciona os novos
-            chart.data.datasets = [createDatasetConfig(metric, dataPoints)];
+            // Cria novo dataset respeitando o estado de visibilidade
+            const newDataset = createDatasetConfig(metric, dataPoints);
+            chart.data.datasets = [newDataset];
             chart.update();
         });
 
         // Atualizar gráfico combinado
-        combinedChart.data.datasets = Object.keys(chartColors).map(metric => {
+        const newDatasets = Object.keys(chartColors).map(metric => {
             const metricData = sensorData[metric];
             const dataPoints = metricData.map((value, index) => ({
                 x: timestamps[index],
                 y: value
             }));
+
+            // Cria novo dataset respeitando o estado de visibilidade
             return createDatasetConfig(metric, dataPoints);
         });
         
+        combinedChart.data.datasets = newDatasets;
         combinedChart.update();
 
     } catch (error) {
@@ -388,6 +441,65 @@ function setAutoUpdate(intervalSeconds) {
 
 // Adiciona evento para o dropdown de atualização automática
 document.addEventListener('DOMContentLoaded', function() {
+    // Inicializa o Flatpickr com o locale em português
+    flatpickr.localize(flatpickr.l10ns.pt);
+    
+    // Obtém a data atual
+    const now = new Date();
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1, 0, 0, 0);
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+    
+    const startPicker = flatpickr("#start-time", {
+        enableTime: true,
+        dateFormat: "d/m/Y H:i",
+        time_24hr: true,
+        locale: "pt",
+        defaultDate: startOfMonth,
+        defaultHour: 0,
+        defaultMinute: 0
+    });
+
+    const endPicker = flatpickr("#end-time", {
+        enableTime: true,
+        dateFormat: "d/m/Y H:i",
+        time_24hr: true,
+        locale: "pt",
+        defaultDate: endOfMonth,
+        defaultHour: 23,
+        defaultMinute: 59
+    });
+
+    // Adiciona evento para o select de período
+    document.getElementById('time-range').addEventListener('change', function() {
+        const now = new Date();
+        let startDate, endDate;
+
+        switch(this.value) {
+            case 'last30min':
+                startDate = new Date(now.getTime() - 30 * 60000);
+                endDate = now;
+                break;
+            case 'last1hour':
+                startDate = new Date(now.getTime() - 60 * 60000);
+                endDate = now;
+                break;
+            case 'last6hours':
+                startDate = new Date(now.getTime() - 6 * 60 * 60000);
+                endDate = now;
+                break;
+            case 'last24hours':
+                startDate = new Date(now.getTime() - 24 * 60 * 60000);
+                endDate = now;
+                break;
+            case 'custom':
+                // Não faz nada, deixa o usuário escolher manualmente
+                return;
+        }
+
+        startPicker.setDate(startDate);
+        endPicker.setDate(endDate);
+    });
+
     const dropdownItems = document.querySelectorAll('#autoUpdateDropdown + .dropdown-menu .dropdown-item');
     
     dropdownItems.forEach(item => {
@@ -411,34 +523,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Inicializar Flatpickr
-    const startTimeInput = document.getElementById('start-date');
-    const endTimeInput = document.getElementById('end-date');
-    
-    if (!startTimeInput || !endTimeInput) {
-        console.error('Elementos de data não encontrados');
-        return;
-    }
-
-    const flatpickrOptions = {
-        enableTime: true,
-        dateFormat: "Y-m-d H:i",
-        time_24hr: true,
-        locale: "pt-BR",
-        defaultHour: 0,
-        defaultMinute: 0
-    };
-
-    const startPicker = flatpickr(startTimeInput, flatpickrOptions);
-    const endPicker = flatpickr(endTimeInput, flatpickrOptions);
-
-    // Configurar datas padrão para 01/01/2024 até 31/01/2024
-    const startDate = new Date(2024, 0, 1, 0, 0, 0); // 01/01/2024 00:00
-    const endDate = new Date(2024, 0, 31, 23, 59, 59); // 31/01/2024 23:59
-
-    startPicker.setDate(startDate);
-    endPicker.setDate(endDate);
-    
     // Adicionar event listener para o botão de alternar visualização
     document.getElementById('toggle-view').addEventListener('click', toggleView);
     
@@ -447,6 +531,26 @@ document.addEventListener('DOMContentLoaded', function() {
     if (updateButton) {
         updateButton.addEventListener('click', updateGraphs);
     }
+
+    // Adiciona eventos para atualizar o estado de visibilidade quando a legenda é clicada
+    Object.keys(charts).forEach(metric => {
+        const chart = charts[metric];
+        chart.options.plugins.legend.onClick = function(e, legendItem, legend) {
+            seriesVisibility[metric] = !seriesVisibility[metric];
+            chart.data.datasets[0].hidden = !seriesVisibility[metric];
+            chart.update();
+        };
+    });
+
+    combinedChart.options.plugins.legend.onClick = function(e, legendItem, legend) {
+        const metric = legendItem.text;
+        seriesVisibility[metric] = !seriesVisibility[metric];
+        const dataset = combinedChart.data.datasets.find(ds => ds.label === metric);
+        if (dataset) {
+            dataset.hidden = !seriesVisibility[metric];
+            combinedChart.update();
+        }
+    };
 
     // Atualizar os gráficos automaticamente ao carregar a página
     updateGraphs();

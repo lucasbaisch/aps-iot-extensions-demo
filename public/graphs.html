@@ -10,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Replace thumbnail.png with favicon.ico -->
     <style>
         .chart-container {
             position: relative;
@@ -45,68 +44,152 @@
             margin-left: 10px;
             font-size: 0.8em;
         }
+        #header {
+            background-color: #444;
+            padding: 15px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        #header select, #header input {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #666;
+            background-color: #555;
+            color: white;
+        }
+        #header button {
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: none;
+            background-color: #0d6efd;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #header button:hover {
+            background-color: #0b5ed7;
+        }
+        #header label {
+            margin-right: 5px;
+        }
+        .color-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .last-value {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="container mt-4">
-        <div class="title-container">
-            <h1>Gráficos dos Sensores</h1>
-            <div class="dropdown">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="autoUpdateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-cog"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="autoUpdateDropdown">
-                    <li><h6 class="dropdown-header">Atualização Automática</h6></li>
-                    <li><a class="dropdown-item" href="#" data-interval="0">Desativado</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="5">5 segundos</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="10">10 segundos</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="30">30 segundos</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="60">1 minuto</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="300">5 minutos</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="600">10 minutos</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="900">15 minutos</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="1800">30 minutos</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="3600">1 hora</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="21600">6 horas</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="43200">12 horas</a></li>
-                    <li><a class="dropdown-item" href="#" data-interval="86400">24 horas</a></li>
-                </ul>
-            </div>
+    <div id="header">
+        <div>
+            <label for="time-range">Período:</label>
+            <select id="time-range">
+                <option value="custom" selected>Período Personalizado</option>
+                <option value="last30min">Últimos 30 min</option>
+                <option value="last1hour">Última 1 hora</option>
+                <option value="last6hours">Últimas 6 horas</option>
+                <option value="last24hours">Últimas 24 horas</option>
+            </select>
         </div>
-        
-        <div class="controls">
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <div class="d-flex justify-content-between align-items-center">
+        <div id="custom-range-fields">
+            <input type="text" id="start-time" class="form-control" placeholder="Selecione data e hora inicial" />
+        </div>
+        <div id="custom-range-fields">
+            <input type="text" id="end-time" class="form-control" placeholder="Selecione data e hora final" />
+        </div>
+        <select id="resolution">
+            <option value="1">1 min</option>
+            <option value="5">5 min</option>
+            <option value="10">10 min</option>
+            <option value="15">15 min</option>
+            <option value="30">30 min</option>
+            <option value="60" selected>1 hora</option>
+            <option value="360">6 horas</option>
+            <option value="720">12 horas</option>
+            <option value="1440">24 horas</option>
+        </select>
+        <button id="fetch-samples">Buscar</button>
+        <a href="analysis.html" class="btn btn-warning">Ir para Análise</a>
+        <a href="index.html" class="btn btn-success">Ir para Visualização</a>
+        <button id="toggle-view" class="btn btn-info">
+            <i class="fas fa-exchange-alt me-2"></i>Ver Gráficos Separados
+        </button>
+        <div class="dropdown">
+            <button class="btn btn-outline-light dropdown-toggle" type="button" id="autoUpdateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-cog"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="autoUpdateDropdown">
+                <li><h6 class="dropdown-header">Atualização Automática</h6></li>
+                <li><a class="dropdown-item" href="#" data-interval="0">Desativado</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="5">5 segundos</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="10">10 segundos</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="30">30 segundos</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="60">1 minuto</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="300">5 minutos</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="600">10 minutos</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="900">15 minutos</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="1800">30 minutos</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="3600">1 hora</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="21600">6 horas</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="43200">12 horas</a></li>
+                <li><a class="dropdown-item" href="#" data-interval="86400">24 horas</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <!-- Painel de últimos valores -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Últimos Valores</h5>
+                <div class="row">
+                    <div class="col-md-3">
                         <div class="d-flex align-items-center">
-                            <div class="me-3">
-                                <label for="start-date" class="form-label">Data Inicial:</label>
-                                <input type="datetime-local" class="form-control" id="start-date">
-                            </div>
-                            <div class="me-3">
-                                <label for="end-date" class="form-label">Data Final:</label>
-                                <input type="datetime-local" class="form-control" id="end-date">
-                            </div>
-                            <div class="me-3">
-                                <label for="resolution" class="form-label">Resolução (minutos):</label>
-                                <input type="number" class="form-control" id="resolution" value="5" min="1">
-                            </div>
-                            <div class="me-3">
-                                <button id="fetch-samples" class="btn btn-primary mt-4">
-                                    <i class="fas fa-sync-alt me-2"></i>Atualizar Gráficos
-                                </button>
+                            <div class="color-indicator" style="background-color: #dc3545;"></div>
+                            <div class="ms-2">
+                                <div class="text-muted">Temperatura</div>
+                                <div class="last-value" id="last-temp">-</div>
                             </div>
                         </div>
-                        <div>
-                            <button id="toggle-view" class="btn btn-warning">
-                                <i class="fas fa-exchange-alt me-2"></i>Ver Gráficos Separados
-                            </button>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex align-items-center">
+                            <div class="color-indicator" style="background-color: #0d6efd;"></div>
+                            <div class="ms-2">
+                                <div class="text-muted">Umidade</div>
+                                <div class="last-value" id="last-umidade">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex align-items-center">
+                            <div class="color-indicator" style="background-color: #198754;"></div>
+                            <div class="ms-2">
+                                <div class="text-muted">CO</div>
+                                <div class="last-value" id="last-co">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex align-items-center">
+                            <div class="color-indicator" style="background-color: #6f42c1;"></div>
+                            <div class="ms-2">
+                                <div class="text-muted">Ruído</div>
+                                <div class="last-value" id="last-ruido">-</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <!-- Gráfico Combinado -->
         <div class="combined-chart">
